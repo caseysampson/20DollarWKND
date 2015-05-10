@@ -25,6 +25,7 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
         <link rel="stylesheet" href="css/themes/wkndtheme.css" />
+        <link rel="stylesheet" href="css/themes/animate.css" />
         <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
         <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -32,307 +33,241 @@
         <script src="js/index.js"></script>
     </head>
     <body class="container">
-        <div data-role="page" class="ui-page" id="page1" data-theme="d">
-<!-- header ------------------------------ -->
-            <div data-role="header" data-position="fixed">
-             <h1>TennisUmp</h1>
-                <div data-role="navbar">
-                    <ul>
-                        <li><a href="#page1" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Match</a></li>
-                        <li><a href="#page2" class="ui-btn ui-btn-inline ui-btn-persist" data-transition="flip">Calls</a></li>
-                        <li><a href="#page6" class="ui-btn ui-btn-inline ui-btn-persist" data-transition="flip">Game Tally</a></li>
-                    </ul>                 
-                </div>
-            </div>
-<!-- --------------------------------- main ui-content ---------------- -->
-        <div data-role="main" class="ui-content">  
-            <div class="ui-grid-a">
-                <div class="ui-block-a">
-                  <button type="submit" class="btn btn-primary btn-lg btn-block" id="point_P1">
-                    Point for Player 1
-                  </button>
-                </div>
-            <div class="ui-block-b">
-                <div class="button-wrap">
-                    <button type="submit" class="btn btn-success btn-lg btn-block" id="point_P2">
-                    Point for Player 2
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div id="rallyscroll">
-             <table class="ui-responsive" id='rallyTable'>
-                <thead>
-                   <tr>
-                       <th id="rally_number">Rally</th>
-                       <th id="P1_name">P1-Score</th> 
-                       <th id="P2_name">P2-Score</th>
-                   </tr>
-                </thead>
-                <tbody id='rallyBody' style="height:100px; overflow:auto;">
-                    <tr> 
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        </div> <!-- end of main page ui-content div -->
-    
-  <!-- -------------------------- Footer --------------------------------------- -->
-                        <div data-role="footer" data-position="fixed" data-fullscreen="true">
-                            <h3>&copy TennisUmp 2014</h3>
-                        </div> <!-- end of footer div -->
-
-    
-        </div> <!-- end of page div -->
-<!-- -----------------------Page 2 --------------------------- -->
-        <div data-role="page" class="ui-page"id="page2" data-theme="d">
+      
             
-            <div data-role="header" data-position="fixed">
-                <h1>TennisUmp</h1>
+<!-- --------------------------------- main ui-content --------------------- -->
+<!-- --------------------------- Page 1 ------------------------------ -->
+        <div data-role="page" class="ui-page" id="page1" data-theme="d" style="background-image:url(img/mocha.png)">
+            <div data-role="header">
+                <h1>Twenty Dollar Weekend</h1>
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#page1" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Match</a></li>
-                        <li><a href="#page2" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Calls</a></li>
-                        <li><a href="#page6" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Game Tally</a></li>
+                        <li><a href="#page4" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Wallet</a></li>
+                        <li><a href="#page2" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Pizza</a></li>
+                        <li><a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Cee-Lo</a></li>
                     </ul>
                 </div>
             </div>
-            <div data-role="main" class="ui-content">
+            
+            <div data-role="main" class="ui-content" id="page3_background">
 
-                <button type="submit" class="btn btn-default btn-lg btn-block" id="let">
-                Let
-                </button>
+            </div>
+        
+        </div>
+
+<!-- --------------------------- Page 2 ------------------------------ -->
+        <div data-role="page" class="ui-page" id="page2" data-theme="d" style="background-image:url(img/road.jpg)">
+            <div data-role="header">
+                <h1>Twenty Dollar Weekend</h1>
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#page4" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Wallet</a></li>
+                        <li><a href="#page2" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Pizza</a></li>
+                        <li><a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Cee-Lo</a></li>
+                    </ul>
+                </div>
+            </div>
                 
-                <button type="submit" class="btn btn-default btn-lg btn-block" id="fault">
-                Fault
-                </button>
-
-                <button type="submit" class="btn btn-default btn-lg btn-block" id="undo">
-                Undo
-                </button>  
-
-                <div class="ui-grid-a">
-                    <div class="ui-block-a">
-                      <button type="submit" class="btn btn-default btn-lg btn-block" id="resetgame">
-                        Reset Game
-                      </button>
-                    </div>   
-                    <div class="ui-block-b"> 
-                        <div class="button-wrap">
-                            <button type="submit" class="btn btn-default btn-lg btn-block" id="resetmatch">
-                            Reset Match
-                            </button>
-                        </div>
+            <div id="beer" class="beer">
+                <div id="beerback">
+                    <div id="beer1">
+                        <img src="img/BlottoBadBatch.png" />
+                    </div>
+                    <div id="beer2">
+                        <img src="img/BlottoBadBatch.png" />
+                    </div>
+                    <div id="beer3">
+                        <img src="img/BlottoBadBatch.png" />
                     </div>
                 </div>
-
-            </div>
-
-            <div data-role="footer"  data-position="fixed" data-fullscreen="true">
-                <h3>&copy TennisUmp 2014</h3>
-            </div>
-        </div>
- <!-- --------------------- Page 3 ------------------------- -->
-        <div data-role="page" class="ui-page" id="page3" data-theme="d">
-            <div data-role="header" data-position="fixed">
-                <h1>TennisUmp</h1>
-                <div data-role="navbar">
-                    <ul>
-                        <li><a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Match</a></li>
-                        <li><a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Calls</a></li>
-                        <li><a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Game Tally</a></li>
-                    </ul>
+                <div id="beerfront">
+                    <div id="beer4">
+                        <img src="img/BlottoBadBatch.png" />
+                    </div>
+                    <div id="beer5">
+                        <img src="img/BlottoBadBatch.png" />
+                    </div>
+                    <div id="beer6">
+                        <img src="img/BlottoBadBatch.png" />
+                    </div>
                 </div>
             </div>
-            <!-- --------hidden Header Below------------- -->
-            <div data-role="header" data-position="fixed" id="headerdisguise">
-                <h1>TennisUmp</h1>
+            <div id="pizza" class="pizza">
+                <div id="pizza-button"></div>
+                <div id="pizzabackleft">
+                    <div id="slice3">
+                        <img src="img/slice3.png" />
+                    </div>
+                    <div id="slice4">
+                        <img src="img/slice4.png" />
+                    </div>
+                </div>
+                <div id="pizzabackright">
+                    <div id="slice1">
+                        <img src="img/slice1.png" />
+                    </div>
+                    <div id="slice2">
+                        <img src="img/slice2.png" />
+                    </div>
+                </div>
+                <div id="pizzafrontleft">
+                    <div id="slice7">
+                        <img src="img/slice7.png" />
+                    </div>
+                    <div id="slice8">
+                        <img src="img/slice8.png" />
+                    </div>
+                </div>
+                <div id="pizzafrontright">
+                    <div id="slice5">
+                        <img src="img/slice5.png" />
+                    </div>
+                    <div id="slice6">
+                        <img src="img/slice6.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+ <!-- --------------------------- Page 3 ------------------------------ -->
+        <div data-role="page" class="ui-page" id="page3" data-theme="d" style="background-image:url(img/road.jpg)">
+            <div data-role="header">
+                <h1>Twenty Dollar Weekend</h1>
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#page6" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Match</a></li>
-                        <li><a href="#page6" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Calls</a></li>
-                        <li><a href="#page6" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Game Tally</a></li>
+                        <li><a href="#page4" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Wallet</a></li>
+                        <li><a href="#page2" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Pizza</a></li>
+                        <li><a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Cee-Lo</a></li>
                     </ul>
                 </div>
             </div>
             <!-- --------hidden Header Above------------- -->
+            <div id="show_banner" class="ui-grid-c banner-top"> 
+                <div id="show_wallet_banner" class="ui-block-a show_banner"></div>
+            </div>
            
-            <div data-role="main" class="ui-content">
-    
-                <div id="hide_selectserver">
-                    <select id="selectserver" data-native-menu="true" data-placeholder="true">
-                      <option value="serverdefault" selected="selected" id="serverdefault">Select Server</option>
-                      <option value="serverPlayerOne" id="serverPlayerOne">player1</option>
-                      <option value="serverPlayerTwo" id="serverPlayerTwo">player2</option>
-                    </select>
+            <div data-role="main" class="ui-content" id="page3_background">
+
+                <div id="banner" class="banner-top"> 
+                    <div id="show_wallet"></div>
+                    <div id="show_die_one_comp">
+                        <div id="die_one_a_comp" class="die one animated wobble">  <span class="dot"></span></div>
+                        <div id="die_two_a_comp" class="die two animated wobble">  <span class="dot"></span></div>
+                        <div id="die_three_a_comp" class="die three animated wobble"><span class="dot"></span></div>
+                        <div id="die_four_a_comp" class="die four animated wobble"> <span class="dot"></span></div>
+                        <div id="die_five_a_comp" class="die five animated wobble"> <span class="dot"></span></div>
+                        <div id="die_six_a_comp" class="die six animated wobble">  <span class="dot"></span></div>
+                    </div>
+                    <div id="show_die_two_comp">
+                        <div id="die_one_b_comp" class="die one animated wobble">  <span class="dot"></span></div>
+                        <div id="die_two_b_comp" class="die two animated wobble">  <span class="dot"></span></div>
+                        <div id="die_three_b_comp" class="die three animated wobble"><span class="dot"></span></div>
+                        <div id="die_four_b_comp" class="die four animated wobble"> <span class="dot"></span></div>
+                        <div id="die_five_b_comp" class="die five animated wobble"> <span class="dot"></span></div>
+                        <div id="die_six_b_comp" class="die six animated wobble">  <span class="dot"></span></div>
+                    </div>
+                    <div id="show_die_three_comp">
+                        <div id="die_one_c_comp" class="die one animated wobble">  <span class="dot"></span></div>
+                        <div id="die_two_c_comp" class="die two animated wobble">  <span class="dot"></span></div>
+                        <div id="die_three_c_comp" class="die three animated wobble"><span class="dot"></span></div>
+                        <div id="die_four_c_comp" class="die four animated wobble"> <span class="dot"></span></div>
+                        <div id="die_five_c_comp" class="die five animated wobble"> <span class="dot"></span></div>
+                        <div id="die_six_c_comp" class="die six animated wobble ">  <span class="dot"></span></div>
+                    </div>
                 </div>
-                
-            </div>
+
+
+                <div id="three_dice"> 
+                    <div id="show_die_one">
+                        <div id="die_one_a" class="die one animated wobble">  <span class="dot"></span></div>
+                        <div id="die_two_a" class="die two animated wobble">  <span class="dot"></span></div>
+                        <div id="die_three_a" class="die three animated wobble"><span class="dot"></span></div>
+                        <div id="die_four_a" class="die four animated wobble"> <span class="dot"></span></div>
+                        <div id="die_five_a" class="die five animated wobble"> <span class="dot"></span></div>
+                        <div id="die_six_a" class="die six animated wobble">  <span class="dot"></span></div>
+                    </div>
+                    <div id="show_die_two">
+                        <div id="die_one_b" class="die one animated wobble">  <span class="dot"></span></div>
+                        <div id="die_two_b" class="die two animated wobble">  <span class="dot"></span></div>
+                        <div id="die_three_b" class="die three animated wobble"><span class="dot"></span></div>
+                        <div id="die_four_b" class="die four animated wobble"> <span class="dot"></span></div>
+                        <div id="die_five_b" class="die five animated wobble"> <span class="dot"></span></div>
+                        <div id="die_six_b" class="die six animated wobble">  <span class="dot"></span></div>
+                    </div>
+                    <div id="show_die_three">
+                        <div id="die_one_c" class="die one animated wobble">  <span class="dot"></span></div>
+                        <div id="die_two_c" class="die two animated wobble">  <span class="dot"></span></div>
+                        <div id="die_three_c" class="die three animated wobble"><span class="dot"></span></div>
+                        <div id="die_four_c" class="die four animated wobble"> <span class="dot"></span></div>
+                        <div id="die_five_c" class="die five animated wobble"> <span class="dot"></span></div>
+                        <div id="die_six_c" class="die six animated wobble">  <span class="dot"></span></div>
+                    </div>
+                </div>
+
+                <div id="blotto_fist">
+                    <img src="img/trans-blotto-fist.png" id="blotto_roll_dice" />
+                </div>
+
+                <div id="blotto_hand">
+                    <img src="img/trans-blotto-hand.png" id="blotto_img_hand" />
+                </div>
+
+                <div id="fist">
+                    <img src="img/trans-fist.png" type="submit" id="roll_dice" />
+                </div>
+
+                <div id="hand">
+                    <img src="img/trans-hand.png" id="img_hand" />
+                </div>
+
+                <div id="roll_dice_comp" class="ui-grid-c">
+                    <button type="submit" id="one_dollar" class="ui-block-a" data-corners="false">
+                        <img src="img/onedollar.png" id="one_dollar_img"/>
+                    </button>
+                    <button type="submit" id="five_dollar" class="ui-block-b" data-corners="false">
+                        <img src="img/fivedollar.png" id="five_dollar_img"/>
+                    </button>
+                    <button type="submit" id="ten_dollar" class="ui-block-c" data-corners="false">
+                        <img src="img/tendollar.png" id="ten_dollar_img"/>
+                    </button>
+                    <button type="submit" id="twenty_dollar" class="ui-block-d" data-corners="false">
+                        <img src="img/twentydollar.png" id="twenty_dollar_img"/>
+                    </button>
+                </div>
+
+            </div>          
             
-            <div data-role="footer" data-position="fixed" data-fullscreen="true">
-                <h3>&copy TennisUmp 2014</h3>
-            </div>
         </div>
 
 <!---------------------------Page 4-------------------------------------------->
-    <div data-role="page" class="ui-page" id="page4" data-theme="d">
-        <div data-role="header" data-position="fixed">
-            <h1>TennisUmp</h1>
+    <div data-role="page" class="ui-page" id="page4" data-theme="d" style="background-image:url(img/blotto_legs_background.png)">
+        <div data-role="header">
+            <h1>Twenty Dollar Weekend</h1>
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#page1" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Match</a></li>
-                    <li><a href="#page2" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Calls</a></li>
-                    <li><a href="#page6" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Game Tally</a></li>
+                    <li><a href="#page1" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Wallet</a></li>
+                    <li><a href="#page2" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Pizza</a></li>
+                    <li><a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Cee-Lo</a></li>
                 </ul>
             </div>
         </div>
 
-        <div data-role="main" class="ui-content">
-            <div> 
-                <button type="submit" class="btn btn-default btn-lg btn-block" id="nextgame">
-                    Start Next Game
-                </button>
-                <button type='submit' class='btn btn-default btn-lg btn-block' id='nextmatch'>
-                    Start Next Match
-                </button>
+        <div id="blotto">
+            <div class="ui-block-a">
+                <h3 id="double_pot"></h3>
+                <h3 id="game_over"></h3>
+                <h3 id="check_wallet"></h3>
+                <h3 id="leave_table"></h3>
+                <h3 id="roll_again"></h3>
             </div>
         </div>
 
-        <div>
-            <table class="ui-responsive" id='setTable'>
-                <thead>
-                  <tr>
-                    <th data-priority="1" id="set_number">Match</th>
-                    <th data-priority="2" id="P1_game">P1-Games</th>   
-                    <th data-priority="3" id="P2_game">P2-Games</th>
-                  </tr>
-                </thead>
-                <tbody id='setBody'>
-                    <tr> 
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-
-         <div data-role="footer" data-position="fixed" data-fullscreen="true">
-            <h3>&copy TennisUmp 2014</h3>
-        </div>
     </div>
 
 <!-- ----------------------------page 5--------------------------------------- -->
-    <div data-role="page" class="ui-page" id="page5" data-theme="d">
-        <div data-role="header" data-position="fixed">
-            <h1>TennisUmp</h1>
-            <div data-role="navbar">
-                <ul>
-                    <li><a href="#page5" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Match</a></li>
-                    <li><a href="#page5" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Calls</a></li>
-                    <li><a href="#page5" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Game Tally</a></li>
-                </ul>
-            </div>
-        </div>
-        
-        <form>
-            <div>
-                <label for="basic" id="enter_name_one">Enter player's name:</label>
-                <input type="text" name="playerOneName" id="playerOneName" value="" placeholder="name"/>
-            </div>    
-            <div>
-                <label for="basic" id="enter_name_two">Enter player's name:</label>
-                <input type="text" name="playerTwoName" id="playerTwoName" value="" placeholder="name"/>
-            </div>
-        </form>
-    
-        <div> 
-            <button type="submit" class="btn btn-default btn-lg btn-block" id="startmatch">
-            Start Match
-            </button>
-        </div>
-
-        <div data-role="footer" data-position="fixed" data-fullscreen="true">
-            <h3>&copy TennisUmp 2014</h3>
-        </div>
-    </div>
 
 
-<!---------------------------Page 6-------------------------------------------->
-    <div data-role="page" class="ui-page" id="page6" data-theme="d">
-        <div data-role="header" data-position="fixed">
-            <h1>TennisUmp</h1>
-            <div data-role="navbar">
-                <ul>
-                    <li><a href="#page1" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Match</a></li>
-                    <li><a href="#page2" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Calls</a></li>
-                    <li><a href="#page6" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Game Tally</a></li>
-                </ul>
-            </div>
-        </div>
-        
+<!-- ----------------------------page 6--------------------------------------- -->
 
-        <div data-role="main" class="ui-content">
-            <div>
-                <button type="submit" class="btn btn-default btn-lg btn-block" id="match_score">Match Tally</button>
-                <!-- <a href="#page4" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">View Match Score</a> -->
-            </div>
-        </div>
-
-        <div id="gameTableBuffer">
-            <div>
-                <table class="ui-responsive" id='gameTable'>
-                    <thead>
-                      <tr>
-                        <th data-priority="1" id="game_number">Set 1</th>
-                        <th data-priority="2" id="P1_score">P1-Score</th>   
-                        <th data-priority="3" id="P2_score">P2-Score</th>
-                      </tr>
-                    </thead>
-                    <tbody id='gameBody'>
-                        <tr> 
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div>
-                <table class="ui-responsive" id='gameTable2'>
-                    <thead>
-                      <tr>
-                        <th data-priority="1" id="game_number2">Set 2</th>
-                        <th data-priority="2" id="P1_score2">P1-Score</th>   
-                        <th data-priority="3" id="P2_score2">P2-Score</th>
-                      </tr>
-                    </thead>
-                    <tbody id='gameBody'>
-                        <tr> 
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div>
-                <table class="ui-responsive" id='gameTable3'>
-                    <thead>
-                      <tr>
-                        <th data-priority="1" id="game_number3">Set 3</th>
-                        <th data-priority="2" id="P1_score3">P1-Score</th>   
-                        <th data-priority="3" id="P2_score3">P2-Score</th>
-                      </tr>
-                    </thead>
-                    <tbody id='gameBody'>
-                        <tr> 
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-         <div data-role="footer" data-position="fixed" data-fullscreen="true">
-            <h3>&copy TennisUmp 2014</h3>
-        </div>
-    </div>
 
 </body>
 </html>

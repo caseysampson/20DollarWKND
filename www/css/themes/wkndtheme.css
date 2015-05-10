@@ -250,7 +250,7 @@ html .ui-bar-a .ui-body-inherit,
 html .ui-body-a .ui-body-inherit,
 html body .ui-group-theme-a .ui-body-inherit,
 html .ui-panel-page-container-a {
-	background-color: #ffffff /*{a-body-background-color}*/;
+	background-color: #ffffff /*{a-body-background-color};
 	border-color: #dddddd /*{a-body-border}*/;
 	color: #333333 /*{a-body-color}*/;
 	text-shadow: 0 /*{a-body-shadow-x}*/ 1px /*{a-body-shadow-y}*/ 0 /*{a-body-shadow-radius}*/ #f3f3f3 /*{a-body-shadow-color}*/;
@@ -728,10 +728,10 @@ html body .ui-group-theme-d .ui-bar-inherit {
 .ui-overlay-d,
 .ui-page-theme-d,
 .ui-page-theme-d .ui-panel-wrapper {
-	background-color: #ffffff /*{d-page-background-color}*/;
-	border-color: #ffffff /*{d-page-border}*/;
-	color: #000000 /*{d-page-color}*/;
-	text-shadow: 0 /*{d-page-shadow-x}*/ 1px /*{d-page-shadow-y}*/ 0 /*{d-page-shadow-radius}*/ #eeeeee /*{d-page-shadow-color}*/;
+	/*background-color: #ffffff /*{d-page-background-color}*/;*/
+	/*border-color: #ffffff /*{d-page-border}*/;*/
+	/*color: #000000 /*{d-page-color}*/;*/
+	/*text-shadow: 0 /*{d-page-shadow-x}*/ 1px /*{d-page-shadow-y}*/ 0 /*{d-page-shadow-radius}*/ #eeeeee /*{d-page-shadow-color}*/;*/
 }
 /* Body: Read-only lists, text inputs, collapsible content */
 .ui-body-d,
@@ -949,94 +949,369 @@ small {
     margin-right: 5px;
 }
 
-table {
-    color: black;
-    background: #fff;
-    border: 1px solid #b4b4b4;
-    font: bold 17px helvetica;
-    padding: 0;
-    margin-top:3px;
-    width: 100%;
-    -webkit-border-radius: 3px; 
-}
-
-table thead {
-    color: #666;
-    border-bottom: 1px solid #b4b4b4;
-    border-right: 1px solid #b4b4b4;
-    padding: 10px 10px 10px 10px;
-    background-image: -webkit-linear-gradient(top, #fdfdfd, #eee);    
-}
-
-#rallyscroll {
-		overflow-y: scroll;
-		height: 300px;
-}
-     
-table tr td {
-    color: #666;
-    border-bottom: 1px solid #b4b4b4;
-    border-right: 1px solid #b4b4b4;
-    padding: 10px 10px 10px 10px;
-    background-image: -webkit-linear-gradient(top, #fdfdfd, #eee);
-    text-align: center;
-}
-         
-table tr td:last-child {
-    border-right: none;
-}
-
-table tr:last-child td {
-    border-bottom: none;
-}
 
 
-#enter_name_one {
-	color: #666;
-	/*font-weight: bold;*/
-  margin-top:10px;
-  margin-bottom: 10px;
+/*/////////////////////
+// CSS Dice 
+/////////////////////*/
+#die.die.one .dot { 
+	box-shadow: 0 .2em 0 #FFF 
+}
+.die.two .dot { 
+	background: transparent;
+	box-shadow: -2.3em -2.3em 0 #345, 
+		     2.3em  2.3em 0 #345, 
+		    -2.3em -2.3em 0 #FFF, 
+		     2.3em  2.4em 0 #FFF 
+}
+.die.three .dot { 
+	box-shadow: -2.3em -2.3em 0 #345, 
+		     2.3em  2.3em 0 #345, 
+		    -2.3em -2.3em 0 #FFF, 
+		     2.3em  2.4em 0 #FFF, 
+		         0   .2em 0 #FFF 
+}
+.die.four .dot { 
+	background: transparent;
+        box-shadow: -2.3em -2.3em 0 #345, 
+        	     2.3em  2.3em 0 #345, 
+        	    -2.3em  2.3em 0 #345, 
+        	     2.3em -2.3em 0 #345, 
+        	    -2.3em -2.3em 0 #FFF, 
+        	     2.3em  2.4em 0 #FFF, 
+        	    -2.3em  2.4em 0 #FFF, 
+        	     2.3em -2.3em 0 #FFF 
+}
+.die.five .dot { 
+	box-shadow: -2.3em -2.3em 0 #345, 
+		     2.3em  2.3em 0 #345, 
+		    -2.3em  2.3em 0 #345, 
+		     2.3em -2.3em 0 #345, 
+		    -2.3em -2.2em 0 #FFF, 
+		     2.3em -2.2em 0 #FFF, 
+		     2.3em  2.4em 0 #FFF, 
+		    -2.3em  2.4em 0 #FFF,
+		         0   .2em 0 #FFF 
+}
+.die.six .dot {
+	background: transparent;
+	box-shadow: -2.3em -2.3em 0 #345,
+		    -2.3em      0 0 #345,
+		    -2.3em  2.3em 0 #345,
+		     2.3em -2.3em 0 #345,
+		     2.3em      0 0 #345,
+		     2.3em  2.3em 0 #345,
+		    -2.3em -2.1em 0 #FFF,
+		    -2.3em   .2em 0 #FFF,
+		    -2.3em  2.4em 0 #FFF,
+		     2.3em  2.4em 0 #FFF,
+		     2.3em   .2em 0 #FFF,
+		     2.3em -2.1em 0 #FFF
+}
+.die {
+	border-top: 1px solid #f1f1f1;
+	width: 50px; height: 50px;
+	border-radius: 10px;
+	position: relative;
+	margin: 10px;
+	font-size: 6px;
+	display: inline-block;
+	box-shadow: 0px 5px 0 #CCC, 0 6px 3px #444, 0 10px 5px #999;
+	background-image: linear-gradient(top, #fefefe, #f1f1f1 80%);
+	background-color: #fff;
+}
+.dot {
+	width: 20%; 
+	height: 20%; 
+	left: 50%; 
+	top: 50%;
+	margin: -10%;
+	background: #345;
+	border-radius: 50%;
+	display: block;
+	position: absolute;
+}
+body { text-align: center }
+
+/*/////////////////////
+// Cee-lo
+/////////////////////*/
+
+#roll_dice_comp {
+	  width: 100%;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
 }
 
-#enter_name_two {
-	color: #666;
-	/*font-weight: bold;*/
-  margin-top: 10px;
-  margin-bottom: 10px;
+#blotto_fist {
+	width: 100%;
+  position: fixed;
+  bottom: 200px;
+  margin-left: 20%;
 }
 
-#startmatch {
+#blotto_hand {
+	width: 100%;
+  position: fixed;
+  bottom: 200px;
+}
+
+#fist {
+  width: 100%;
+  position: fixed;
+  bottom: 53px;
+}
+
+#hand {
+  width: 100%;
+  position: fixed;
+  bottom: 53px;
+}
+
+#roll_dice {
+	width: 160px;
+	height: auto;
+}
+
+#img_hand {
+  width: 160px;
+	height: auto;
+}
+
+#one_dollar, #five_dollar, #ten_dollar, #twenty_dollar {
+	margin-bottom: -7px;
+}
+
+#one_dollar_img, #five_dollar_img, #ten_dollar_img, #twenty_dollar_img {
+	min-height: 60px;
+	width: 100%;
+}
+
+#page4 {
+	background-repeat:no-repeat;
+  background-size:cover;
+}
+
+#show_wallet {
+	float: left;
+	margin-left: 10%;
 	margin-top: 20px;
+	font-size: 20px;
+	color: #fff;
 }
 
-#game_number {
-	width: 25%;
+#show_wallet_banner {
+	margin-top: 36px;
+	margin-left: 14px;
+	font-size: 20px;
+	color: #fff;
 }
 
-#game_number2 {
-	width: 25%;
+.banner-top {
+	background: rgba(0,0,0,0.5);
+	width: 120%;
+	margin-left: -10%;
+	margin-top: -16px;
+	height: 75px;
 }
 
-#game_number3 {
-	width: 25%;
+#show_banner {
+	background: rgba(0,0,0,0.5);
+	width: 120%;
+	margin-left: -10%;
+	margin-top: -16px;
+	height: 91px;
 }
 
-#set_number {
-	width: 25%;
+/*///////////////////////////
+Die
+///////////////////////////*/
+
+#show_die_one {
+	margin-top: 130px;
+	float:left;
+	margin-left: 30%;
+
 }
 
-#rally_number {
-	width: 25%;
+#show_die_two {
+	margin-top: 45px;
+	float: left;
 }
 
-#gameTableBuffer {
-	margin-bottom: 12%
+#show_die_three {
+	margin-top: 115px;
+	float: left;
+}
+
+#show_die_one_comp {
+	float:right;
+	margin-right:10%;
+}
+
+#show_die_two_comp {
+	float:right;
+}
+
+#show_die_three_comp {
+	float:right;
+}
+
+.comp_die_one {
+	margin-top: 150px !important;
+	margin-right:40% !important;
+}
+
+.comp_die_two {
+	margin-top: 45px !important;
+}
+
+.comp_die_three {
+	margin-top: 115px !important;
+}
+
+/*///////////////////////////
+Beer
+///////////////////////////*/
+
+#beerback {
+	/*position: relative;*/
+	position: absolute;
+	z-index: 1;
+}
+
+#beerfront {
+	/*position: relative;*/
+	position: absolute;
+	z-index: 2;
+	top: 105px;
+}
+
+#beerfront img {
+	width: 60%;
+}
+
+#beerback img {
+	width: 60%;
+}
+
+#beer1 {
+	margin-right: -55px;
+	float:left;
+}
+
+#beer2 {
+	float:left;
+}
+
+#beer3 {
+	margin-left: -55px;
+	float:left;
+}
+
+#beer4 {
+	margin-right: -55px;
+	float:left;
+}
+
+#beer5 {
+	float:left;
+}
+
+#beer6 {
+	margin-left: -55px;
+	float:left;
+}
+
+/*///////////////////////////
+Pizza
+///////////////////////////*/
+
+#pizza-button {
+	float:left;
+	position: absolute;
+	top:300px;
+	z-index: 3;
+	/*background-color: #fff;
+*/width: 300px;
+	height: 180px;
+}
+
+#pizza img {
+	width: 250px;
+	height:auto;
+}
+
+#slice1 {
+	float:left;
+	position: absolute;
+	z-index: 1;
+	top:150px;
+	margin-left: 220px;
+}
+
+#slice2 {
+	float:left;
+	position: absolute;
+	z-index: 2;
+	top: 150px;
+	margin-left: 220px;
+}
+
+#slice3 {
+	float:left;
+	position: absolute;
+	z-index: 1;
+	top: 338px;
+	margin-left: 220px;
+}
+
+#slice4 {
+	float:left;
+	position: absolute;
+	z-index: 2;
+	top: 338px;
+	margin-left: 220px;
+}
+
+#slice5 {
+	float:left;
+	position: absolute;
+	z-index: 1;
+	top: 338px;
+	margin-left: -30px;
+}
+
+#slice6 {
+	float:left;
+	position: absolute;
+	z-index: 2;
+	top: 338px;
+	margin-left: -30px;
+}
+
+#slice7 {
+	float:left;
+	position: absolute;
+	z-index: 1;
+	top: 150px;
+	margin-left: -30px;
+}
+
+#slice8 {
+	float:left;
+	position: absolute;
+	z-index: 2;
+	top: 152px;
+	margin-left: -30px;
 }
 
 
 
 
 
-/******************************************** end of swiping pages *********************************/
+
+
 
 
