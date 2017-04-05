@@ -16,6 +16,7 @@
      KIND, either express or implied.  See the License for the
     specific language governing permissions and limitations
     under the License.
+
 -->
 <html>
     <head>
@@ -39,23 +40,30 @@
             
 <!-- --------------------------------- main ui-content --------------------- -->
 <!-- --------------------------- Page 1 ------------------------------ -->
-     <div data-role="page" class="ui-page" id="page1" data-theme="d" style="background-image:url(img/blotto_legs_background.png)">
+     <div data-role="page" class="ui-page" id="page1" data-theme="d" style="background-image:url(img/brick_background.jpg)">
         <div data-role="header">
-            <h1>Twenty Dollar Weekend</h1>
+            <h1 class="header-padding">Blotto's Weekend</h1>
         </div>
 
-        <div id="dice-page-button" class="ui-block-c show_banner"><a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="slide">Dice</a></li></div>
-
-        <div id="intro-1" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
-           Welcome to the weekend buddy!
-        </div>
-
-        <div id="intro-2" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
-           Your mission if you choose to except it is to eat pizza and drink beer.
-        </div>
         
-        <div id="intro-3" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
-           Now lets play some Cee-lo!
+
+        <div id="dice-page-button" class="ui-block-c show_banner"><a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">DICE</a></li></div>
+        <div class="contain-bubble">
+            <div id="intro-1" class="bubble-blotto-ally-wide" style="border-color: pink; background: pink;">
+               Hey buddy I got the dice, if you got the cash...
+            </div>
+        
+            <div id="intro-2" class="bubble-blotto-ally-wide" style="border-color: pink; background: pink;">
+               Let's play some cee-lo!
+            </div>
+            
+            <!-- <div id="intro-3" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
+               Now lets play some Cee-lo!
+            </div> -->
+
+            <div>
+                <img id="blotto-trans" src="img/blotto-trans.png" />
+            </div>
         </div>
 
     </div>
@@ -63,15 +71,17 @@
 <!-- --------------------------- Page 2 ------------------------------ -->
         <div data-role="page" class="ui-page" id="page2" data-theme="d" style="background-image:url(img/wood-table-top.jpg)">
             <div data-role="header">
-                <a href="#" class="ui-btn ui-icon-bars ui-btn-icon-left top-icons" id="icon-bars"></a>
-                <h1>Twenty Dollar Weekend</h1>
-                <a href="#" class="ui-btn ui-icon-refresh ui-btn-icon-right top-icons" id="icon-restart"></a>
+
+                
+                <a href="#" class="ui-btn ui-icon-refresh ui-btn-icon-right top-icons header-padding" id="icon-restart"></a>
+                <h1 class="header-padding">Blotto's Weekend</h1>
+                <a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist header-padding"  data-transition="flip" id="exit">EXIT</a>
+
             </div>
 
             <div id="banner_party" class="ui-grid-c banner_party_top"> 
                 <div id="show_wallet_party" class="ui-block-a"></div>
                 <div class="ui-block-b"></div>
-                <div id="dice-page-button" class="ui-block-c show_banner"><a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Dice</a></li></div>
             </div>
                 
             <div id="beer" class="beer">
@@ -99,6 +109,14 @@
                     </div>
                 </div>
             </div>
+
+            <div id="whiskey" class="whiskey">
+                <button type="submit" id="whiskey-button" data-corners="false"></button>
+                <div id="whiskeycup">
+                    <img src="img/whiskey.png" />
+                </div>
+            </div>
+
             <div id="pizza" class="pizza">
                 <button type="submit" id="pizza-button" data-corners="false"></button>
                 <div id="pizzabackleft">
@@ -135,30 +153,53 @@
                 </div>
             </div>
 
+            <div id="menu" class="menu">
+                <button type="submit" id="menu-button" data-corners="false"></button>
+                <div id="bar_menu">
+                    <img src="img/trans_menu.png" />
+                </div>
+            </div>
+            <div id="menu_top" class="menu_top">
+                <button type="submit" id="menu-button-top" data-corners="false"></button>
+                <div id="bar_menu_top">
+                    <img src="img/trans_menu_top.png" />
+                </div>
+            </div>
+
         </div>
  <!-- --------------------------- Page 3 ------------------------------ -->
         <div data-role="page" class="ui-page" id="page3" data-theme="d" style="background-image:url(img/road.jpg)">
             <div data-role="header">
-                <a href="#" class="ui-btn ui-icon-bars ui-btn-icon-left top-icons" id="icon-bars"></a>
-                <h1>Twenty Dollar Weekend</h1>
-                <a href="#" class="ui-btn ui-icon-refresh ui-btn-icon-right top-icons" id="icon-restart"></a>
-                <div data-role="navbar" id="navbar">
+               
+               <a href="#" class="ui-btn ui-icon-refresh ui-btn-icon-right top-icons header-padding" id="icon-restart"></a>
+
+               <h1 class="header-padding">Blotto's Weekend</h1>
+                
+               <a href="#" class="ui-btn ui-btn-inline ui-btn-persist header-padding" id="open_bar">OPEN</a>
+               
+               <!--  <div data-role="navbar" id="navbar">
                     <ul>
                         <li><a href="#page4" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Blotto</a></li>
                         <li><a href="#page2" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Party</a></li>
                         <li><a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Dice</a></li>
                     </ul>
-                </div>
+                </div> -->
+
             </div>
             <!-- --------hidden Header Above------------- -->
             <div id="show_banner" class="ui-grid-c banner-top"> 
                 <div id="show_wallet_banner" class="ui-block-a show_banner"></div>
+                <p id="double_pot" class="top_message">DOUBLE UP!</p>
+                <p id="all_in" class="top_message">ALL IN!</p>
             </div>
            
             <div data-role="main" class="ui-content" id="page3_background">
 
                 <div id="banner" class="banner-top"> 
                     <div id="show_wallet"></div>
+                    <p id="double_pot_bro" class="top_message">DOUBLE UP!</p>
+                    <p id="all_in_bro" class="top_message">ALL IN!</p>
+                    <p id="place_bet" class="top_message">PLACE BET</p>
                     <div id="show_die_one_comp">
                         <div id="die_one_a_comp" class="die one animated wobble">  <span class="dot"></span></div>
                         <div id="die_two_a_comp" class="die two animated wobble">  <span class="dot"></span></div>
@@ -213,10 +254,9 @@
                     </div>
                 </div>
 
-                <p id="double_pot" class="bubble blotto-speech">Double Up!</p>
-                <p id="game_over" class="bubble blotto-speech"></p>
-                <p id="check_wallet" class="bubble blotto-speech">You better check your wallet</p>
-                <p id="leave_table" class="bubble blotto-speech">Ante up or sit this one out buuuudddy</p>
+                <div id="blotto_alley">
+                    <img src="img/blotto_alley.jpg" />
+                </div>
 
                 <div id="blotto_fist">
                     <img src="img/trans-blotto-fist.png" id="blotto_roll_dice" />
@@ -254,35 +294,46 @@
         </div>
 
 <!---------------------------Page 4-------------------------------------------->
-    <div data-role="page" class="ui-page" id="page4" data-theme="d" style="background-image:url(img/blotto_legs_background.png)">
+    <div data-role="page" class="ui-page" id="page4" data-theme="d" style="background-image:url(img/brick_background.jpg)">
         <div data-role="header">
-            <a href="#" class="ui-btn ui-icon-bars ui-btn-icon-left top-icons" id="icon-bars"></a>
-            <h1>Twenty Dollar Weekend</h1>
-            <a href="#" class="ui-btn ui-icon-refresh ui-btn-icon-right top-icons" id="icon-restart"></a>
-            <!-- <div data-role="navbar" id="navbar">
-                <ul>
-                    <li><a href="#page4" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Blotto</a></li>
-                    <li><a href="#page2" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Party</a></li>
-                    <li><a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Dice</a></li>
-                </ul>
-            </div> -->
+            <a href="#" class="ui-btn ui-icon-refresh ui-btn-icon-right top-icons header-padding" id="icon-restart"></a>
+            <h1 class="header-padding">Blotto's Weekend</h1>
         </div>
 
-        <div id="dice-page-button" class="ui-block-c show_banner"><a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Dice</a></li></div>
+        <div id="dice-page-button" class="ui-block-c show_banner"><a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">DICE</a></li></div>
 
-        <div id="friday_goodnight" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
-           Great Friday Night Buddy!
-        </div>
+        <div class="contain-bubble">
+        
+            <!-- WEEKEND OVER -->
+            <div id="weekend_over" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
+               Great Weekend Buddy!
+            </div>
 
-        <div id="saturday_goodnight" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
-           Great Saturday Night Buddy!
+            <div id="total_points" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
+            </div>
+
+           <!--  FRIDAY NIGHT -->
+            <div id="friday_goodnight" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
+               Great Friday Night Buddy!
+            </div>
+
+            <div id="weekend_points" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
+            </div>
+
+            <!-- SATURDAY NIGHT -->
+            <div id="saturday_goodnight" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
+               Great Saturday Night Buddy!
+            </div>
+
+            <div>
+                <img id="blotto-trans" src="img/blotto-trans.png" />
+            </div>
         </div>
     
-
     </div>
 
 <!-- ----------------------------page 5--------------------------------------- -->
-
+    
 
 <!-- ----------------------------page 6--------------------------------------- -->
 
