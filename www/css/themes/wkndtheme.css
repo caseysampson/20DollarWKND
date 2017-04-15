@@ -1103,11 +1103,6 @@ body { text-align: center }
   background-size:cover;
 }
 
-/*#page3 {
-	background-repeat:no-repeat;
-  background-size:cover;
-}
-*/
 #page2 {
 	background-repeat:no-repeat;
   background-size:cover;
@@ -1289,12 +1284,22 @@ Speech
   width: 100%;
   z-index: 100;
   background: rgba(26,232,109,0.7);
+  /*background: rgba(255,255,1,0.7);*/
   right: 0px;
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 22px;
   margin-top: 0px;
   font-size: 25px;
   font-weight: bold;
+}
+
+.winner {
+  color: rgba(26,232,109,1) !important;
+	/*color: #32CD32 !important;*/
+}
+
+.loser {
+	color: red !important;
 }
 
 .contain-bubble {
@@ -1310,6 +1315,18 @@ Page One
 	max-height: 350px;
 	margin-left: 75px;
 	position: relative;
+}
+
+#blotto-button {
+  height: 200px;
+  width: 150px;
+  left: 85px;
+  position: absolute;
+  bottom: 100px;
+  z-index: 2;
+  background: transparent;
+  box-shadow: none;
+  border: none;
 }
 
 /*///////////////////////////
@@ -1381,6 +1398,12 @@ Die
   font-size: 20px;
 }
 
+.closed_bar {
+  border-color: rgba(0,0,0,0.3) !important;
+  color: rgba(0,0,0,0.3) !important;
+  background: rgba(0,0,0,0.1) !important;
+}
+
 #page2 {
   overflow-y: hidden;
 }
@@ -1397,7 +1420,7 @@ Die
 }
 
 /*///////////////////////////
-Page 2
+Page 3
 ///////////////////////////*/
 
 #page3_background {
@@ -1405,6 +1428,7 @@ Page 2
   width: 100%;
   padding: 0px;
 }
+
 /*///////////////////////////
 Whiskey
 ///////////////////////////*/
@@ -1557,8 +1581,8 @@ Pizza
 #pizza-button {
 	float:left;
 	position: absolute;
-	top:300px;
-	margin-left:15px;
+	top:280px;
+	left:20px;
 	z-index: 5;
 	width: 285px;
 	height: 150px;
@@ -1567,7 +1591,8 @@ Pizza
 }
 
 #pizza img {
-	width: 200px;
+	/*width: 200px;*/
+	width: 175px;
 	height:auto;
 }
 
@@ -1576,7 +1601,8 @@ Pizza
 	position: absolute;
 	z-index: 1;
 	top:225px;
-	margin-left: 170px;
+	/*margin-left: 170px;*/
+	left: 180px;
 }
 
 #slice2 {
@@ -1584,39 +1610,42 @@ Pizza
 	position: absolute;
 	z-index: 2;
 	top: 225px;
-	margin-left: 170px;
+	/*margin-left: 170px;*/
+	left: 180px;
 }
 
 #slice3 {
 	float:left;
 	position: absolute;
 	z-index: 1;
-	top: 375px;
-	margin-left: 170px;
+	top: 356px;
+	/*margin-left: 170px;*/
+	left: 180px;
 }
 
 #slice4 {
 	float:left;
 	position: absolute;
 	z-index: 2;
-	top: 375px;
-	margin-left: 169px;
+	top: 356px;
+	/*margin-left: 169px;*/
+	left: 180px;
 }
 
 #slice5 {
 	float:left;
 	position: absolute;
 	z-index: 4;
-	top: 375px;
-	margin-left: -31px;
+	top: 356px;
+	left: 5px;
 }
 
 #slice6 {
 	float:left;
 	position: absolute;
 	z-index: 3;
-	top: 375px;
-	margin-left: -30px;
+	top: 356px;
+	left: 6px;
 }
 
 #slice7 {
@@ -1624,7 +1653,7 @@ Pizza
 	position: absolute;
 	z-index: 2;
 	top: 228px;
-	margin-left: -31px;
+	left: 5px;
 }
 
 #slice8 {
@@ -1632,7 +1661,7 @@ Pizza
 	position: absolute;
 	z-index: 1;
 	top: 227px;
-	margin-left: -30px;
+	left: 5px;
 }
 
 
@@ -1645,6 +1674,7 @@ Pizza
 	width: 0px;
 	height: 20px;
 	border:none;
+	box-shadow: none;
 }
 
 #icon-restart {
@@ -1652,5 +1682,56 @@ Pizza
 	width: 0px;
 	height: 20px;
 	border:none;
+	box-shadow: none;
 }
 
+/*///////////////////////////
+Page Four
+///////////////////////////*/
+
+#blotto-trans-wknd {
+	max-height: 350px;
+	margin-left: 75px;
+	position: relative;
+}
+
+#blotto-button-wknd {
+  height: 200px;
+  width: 150px;
+  left: 85px;
+  position: absolute;
+  bottom: 100px;
+  z-index: 2;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+#mickeycounter {
+	position: absolute;
+	top: 10px;
+}
+
+#mickey img {
+	margin: 5px;
+  padding: 5px;
+  position: relative;
+  border-radius: 5px;
+  margin-left: 25px;
+  width: 150px;
+  z-index: 1;
+}
+
+#counter {
+	  margin: 5px;
+    padding: 5px;
+    position: relative;
+    border-radius: 5px;
+    margin-left: 25px;
+    color: gold;
+    font-weight: bold;
+    font-size: 35px;
+    top: 125px;
+    z-index: 10;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}

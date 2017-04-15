@@ -79,8 +79,6 @@ var wknd = function() {
     hideComputerDice();
     hidePlayerDice();
     rollDieOneComp();
-    // rollDieTwoComp(); 
-    // rollDieThreeComp();
   }
 
   var rollDieOneComp = function() {
@@ -100,7 +98,6 @@ var wknd = function() {
       $('#die_six_a_comp').show();
     }
     rollDieTwoComp();
-    console.log(dieLandingOneComp);
   }
 
   var rollDieTwoComp = function() {
@@ -120,7 +117,6 @@ var wknd = function() {
       $('#die_six_b_comp').show();
     }
     rollDieThreeComp();
-    console.log(dieLandingTwoComp);
   }
 
   var rollDieThreeComp = function() {
@@ -140,7 +136,20 @@ var wknd = function() {
       $('#die_six_c_comp').show();
     }
     checkResultComp();
-    console.log(dieLandingThreeComp);
+  }
+
+  var checkResultComp = function() {
+    if ((dieLandingOneComp == dieLandingTwoComp) && (dieLandingOneComp == dieLandingThreeComp) && (dieLandingTwoComp == dieLandingThreeComp)){
+      handleCompTriples();
+    } else if (((dieLandingOneComp == 1) && (dieLandingTwoComp == 2) && (dieLandingThreeComp == 3)) || ((dieLandingOneComp == 1) && (dieLandingTwoComp == 3) && (dieLandingThreeComp == 2)) || ((dieLandingOneComp == 2) && (dieLandingTwoComp == 3) && (dieLandingThreeComp == 1)) || ((dieLandingOneComp == 2) && (dieLandingTwoComp == 1) && (dieLandingThreeComp == 3)) || ((dieLandingOneComp == 3) && (dieLandingTwoComp == 1) && (dieLandingThreeComp == 2)) || ((dieLandingOneComp == 3) && (dieLandingTwoComp == 2) && (dieLandingThreeComp == 1))) {
+      handleCompOneTwoThree();
+    } else if (((dieLandingOneComp == 4) && (dieLandingTwoComp == 5) && (dieLandingThreeComp == 6)) || ((dieLandingOneComp == 4) && (dieLandingTwoComp == 6) && (dieLandingThreeComp == 5)) || ((dieLandingOneComp == 5) && (dieLandingTwoComp == 6) && (dieLandingThreeComp == 4)) || ((dieLandingOneComp == 5) && (dieLandingTwoComp == 4) && (dieLandingThreeComp == 6)) || ((dieLandingOneComp == 6) && (dieLandingTwoComp == 4) && (dieLandingThreeComp == 5)) || ((dieLandingOneComp == 6) && (dieLandingTwoComp == 5) && (dieLandingThreeComp == 4))) {
+      handleCompFourFiveSix();
+    } else if ((dieLandingOneComp == dieLandingTwoComp) || (dieLandingOneComp == dieLandingThreeComp) || (dieLandingTwoComp == dieLandingThreeComp)) {
+      handleCompDoubles();
+    } else {
+      rollDiceComp();
+    }
   }
 
   /////////////////////////
@@ -150,22 +159,6 @@ var wknd = function() {
   var rollDice = function() {
     hidePlayerDice();
     rollDieOne();
-    // rollDieTwo();
-    // rollDieThree();
-  }
-
-  var checkResultPlayer = function() {
-    if ((dieLandingOne == dieLandingTwo) && (dieLandingOne == dieLandingThree) && (dieLandingTwo == dieLandingThree)) {
-      handleTriplesAndEquals();
-    } else if (((dieLandingOne == 1) && (dieLandingTwo == 2) && (dieLandingThree == 3)) || ((dieLandingOne == 1) && (dieLandingTwo == 3) && (dieLandingThree == 2)) || ((dieLandingOne == 2) && (dieLandingTwo == 3) && (dieLandingThree == 1)) || ((dieLandingOne == 2) && (dieLandingTwo == 1) && (dieLandingThree == 3)) || ((dieLandingOne == 3) && (dieLandingTwo == 1) && (dieLandingThree == 2)) || ((dieLandingOne == 3) && (dieLandingTwo == 2) && (dieLandingThree == 1))) {
-      handlePartyBroOneTwoThree();
-    } else if (((dieLandingOne == 4) && (dieLandingTwo == 5) && (dieLandingThree == 6)) || ((dieLandingOne == 4) && (dieLandingTwo == 6) && (dieLandingThree == 5)) || ((dieLandingOne == 5) && (dieLandingTwo == 6) && (dieLandingThree == 4)) || ((dieLandingOne == 5) && (dieLandingTwo == 4) && (dieLandingThree == 6)) || ((dieLandingOne == 6) && (dieLandingTwo == 4) && (dieLandingThree == 5)) || ((dieLandingOne == 6) && (dieLandingTwo == 5) && (dieLandingThree == 4))) {
-      handlePartyBroFourFiveSix();
-    } else if ((dieLandingOne == dieLandingTwo) || (dieLandingOne == dieLandingThree) || (dieLandingTwo == dieLandingThree)) {
-      handlePartyBroDoubles();
-    } else {
-      rollDice();
-    }
   }
 
   var rollDieOne = function() {
@@ -225,6 +218,20 @@ var wknd = function() {
     checkResultPlayer();
   }
 
+  var checkResultPlayer = function() {
+    if ((dieLandingOne == dieLandingTwo) && (dieLandingOne == dieLandingThree) && (dieLandingTwo == dieLandingThree)) {
+      handleTriplesAndEquals();
+    } else if (((dieLandingOne == 1) && (dieLandingTwo == 2) && (dieLandingThree == 3)) || ((dieLandingOne == 1) && (dieLandingTwo == 3) && (dieLandingThree == 2)) || ((dieLandingOne == 2) && (dieLandingTwo == 3) && (dieLandingThree == 1)) || ((dieLandingOne == 2) && (dieLandingTwo == 1) && (dieLandingThree == 3)) || ((dieLandingOne == 3) && (dieLandingTwo == 1) && (dieLandingThree == 2)) || ((dieLandingOne == 3) && (dieLandingTwo == 2) && (dieLandingThree == 1))) {
+      handlePartyBroOneTwoThree();
+    } else if (((dieLandingOne == 4) && (dieLandingTwo == 5) && (dieLandingThree == 6)) || ((dieLandingOne == 4) && (dieLandingTwo == 6) && (dieLandingThree == 5)) || ((dieLandingOne == 5) && (dieLandingTwo == 6) && (dieLandingThree == 4)) || ((dieLandingOne == 5) && (dieLandingTwo == 4) && (dieLandingThree == 6)) || ((dieLandingOne == 6) && (dieLandingTwo == 4) && (dieLandingThree == 5)) || ((dieLandingOne == 6) && (dieLandingTwo == 5) && (dieLandingThree == 4))) {
+      handlePartyBroFourFiveSix();
+    } else if ((dieLandingOne == dieLandingTwo) || (dieLandingOne == dieLandingThree) || (dieLandingTwo == dieLandingThree)) {
+      handlePartyBroDoubles();
+    } else {
+      rollDice();
+    }
+  }
+
   /////////////////////////
   // Shared Outcomes
   /////////////////////////
@@ -243,24 +250,6 @@ var wknd = function() {
   /////////////////////////
   // Comp Outcomes
   /////////////////////////
-  var checkResultComp = function() {
-    if ((dieLandingOneComp == dieLandingTwoComp) && (dieLandingOneComp == dieLandingThreeComp) && (dieLandingTwoComp == dieLandingThreeComp)){
-      handleCompTriples();
-    } else if (((dieLandingOneComp == 1) && (dieLandingTwoComp == 2) && (dieLandingThreeComp == 3)) || ((dieLandingOneComp == 1) && (dieLandingTwoComp == 3) && (dieLandingThreeComp == 2)) || ((dieLandingOneComp == 2) && (dieLandingTwoComp == 3) && (dieLandingThreeComp == 1)) || ((dieLandingOneComp == 2) && (dieLandingTwoComp == 1) && (dieLandingThreeComp == 3)) || ((dieLandingOneComp == 3) && (dieLandingTwoComp == 1) && (dieLandingThreeComp == 2)) || ((dieLandingOneComp == 3) && (dieLandingTwoComp == 2) && (dieLandingThreeComp == 1))) {
-      handleCompOneTwoThree();
-    } else if (((dieLandingOneComp == 4) && (dieLandingTwoComp == 5) && (dieLandingThreeComp == 6)) || ((dieLandingOneComp == 4) && (dieLandingTwoComp == 6) && (dieLandingThreeComp == 5)) || ((dieLandingOneComp == 5) && (dieLandingTwoComp == 6) && (dieLandingThreeComp == 4)) || ((dieLandingOneComp == 5) && (dieLandingTwoComp == 4) && (dieLandingThreeComp == 6)) || ((dieLandingOneComp == 6) && (dieLandingTwoComp == 4) && (dieLandingThreeComp == 5)) || ((dieLandingOneComp == 6) && (dieLandingTwoComp == 5) && (dieLandingThreeComp == 4))) {
-      handleCompFourFiveSix();
-    } else if ((dieLandingOneComp == dieLandingTwoComp) || (dieLandingOneComp == dieLandingThreeComp) || (dieLandingTwoComp == dieLandingThreeComp)) {
-      handleCompDoubles();
-      console.log("---checkResultComp---");
-      console.log(dieLandingOneComp);
-      console.log(dieLandingTwoComp);
-      console.log(dieLandingThreeComp);
-    } else {
-      rollDiceComp();
-    }
-  }
-
   var handleCompTriples = function() {
     $('#roll_dice').hide();
     if (partyBro.dollar >= currentBet) {
@@ -283,7 +272,7 @@ var wknd = function() {
     } else if (dieLandingOneComp == dieLandingThreeComp){
       compDouble = dieLandingOneComp;
       compSingle = dieLandingTwoComp;
-    } else if (dieLandingTwo == dieLandingThree){
+    } else if (dieLandingTwoComp == dieLandingThreeComp){
       compDouble = dieLandingTwoComp;
       compSingle = dieLandingOneComp;
     }
@@ -300,18 +289,20 @@ var wknd = function() {
     showWallet();
     $('#img_hand').hide();
     $('#roll_dice').hide();
-    setTimeout(function(){
-      hideCompDiceTimeout();
-    }, 2000);
+    winnerShowBannerColor();
+    // setTimeout(function(){
+    hideCompDiceTimeout();
+    // }, 1000);
   }
 
   var handleCompFourFiveSix = function() {
     showWallet();
     $('#img_hand').hide();
     $('#roll_dice').hide();
-    setTimeout(function(){
-      hideCompDiceTimeout();
-    }, 2000);
+    loserShowBannerColor();
+    // setTimeout(function(){
+    hideCompDiceTimeout();
+    // }, 1000);
   }
 
   /////////////////////////
@@ -321,21 +312,51 @@ var wknd = function() {
     if ( (partyBroSingle > compSingle) || ((partyBroSingle == compSingle) && (partyBroDouble > compDouble)) ) {
       partyBro.dollar = partyBro.dollar + currentPot;
       hideDiceTimeout();
-      console.log("Win");
-      console.log("compSingle: " + compSingle + " compDouble: " + compDouble);
-      console.log("partyBroSingle: " + partyBroSingle + " partyBroDouble: " + partyBroDouble);
+      winnerBannerColor();
     } else if ((partyBroSingle == compSingle) && (partyBroDouble == compDouble)) {
       handleTriplesAndEquals();
-      console.log("Equal");
-      console.log("compSingle: " + compSingle + " compDouble: " + compDouble);
-      console.log("partyBroSingle: " + partyBroSingle + " partyBroDouble: " + partyBroDouble);
     } else {
       hideDiceTimeout();
-      console.log("Lose");
-      console.log("compSingle:" + compSingle + "compDouble:" + compDouble);
-      console.log("partyBroSingle: " + partyBroSingle + " partyBroDouble: " + partyBroDouble);
+      loserBannerColor();
     }
     showWallet();
+    // console.log("---Compare Roll Start---");
+    // console.log("compSingle: " + compSingle + " compDouble: " + compDouble);
+    // console.log("partyBroSingle: " + partyBroSingle + " partyBroDouble: " + partyBroDouble);
+    // console.log("---Compare Roll End---");
+    // console.log("---Comp Start---");
+    // console.log(dieLandingOneComp);
+    // console.log(dieLandingTwoComp);
+    // console.log(dieLandingThreeComp);
+    // console.log("---Comp End---");
+  }
+
+  var winnerBannerColor = function() {
+    $('#show_wallet').addClass('winner');
+    setTimeout(function(){
+      $('#show_wallet').removeClass('winner');
+    }, 3000);
+  }
+
+  var winnerShowBannerColor = function() {
+    $('#show_wallet_banner').addClass('winner');
+    setTimeout(function(){
+      $('#show_wallet_banner').removeClass('winner');
+    }, 3000);
+  }
+
+  var loserBannerColor = function() {
+    $('#show_wallet').addClass('loser');
+    setTimeout(function(){
+      $('#show_wallet').removeClass('loser');
+    }, 3000);
+  }
+
+  var loserShowBannerColor = function() {
+    $('#show_wallet_banner').addClass('loser');
+    setTimeout(function(){
+      $('#show_wallet_banner').removeClass('loser');
+    }, 3000);
   }
 
   var handleTriplesAndEquals = function() {
@@ -372,11 +393,13 @@ var wknd = function() {
     partyBro.dollar = partyBro.dollar + currentPot;
     hideDiceTimeout();
     showWallet();
+    winnerBannerColor();
   }
 
   var handlePartyBroOneTwoThree = function() {
     hideDiceTimeout();
     showWallet();
+    loserBannerColor();
   }
 
   /////////////////////////
@@ -456,8 +479,8 @@ var wknd = function() {
       $('#double_pot_bro').hide();
       $('#all_in_bro').hide();
       partyTime();
-      // hidePlayerDice();
-      // hideComputerDice();
+      hidePlayerDice();
+      hideComputerDice(); 
       enableBet();
       checkWallet();
     }, 3000);
@@ -589,7 +612,8 @@ var wknd = function() {
     $('#ten_dollar').attr("disabled", true);
     $('#twenty_dollar').attr("disabled", true);
     $('#place_bet').hide();
-    $('#open_bar').hide();
+    $('#open_bar').prop("disabled",true);
+    $('#open_bar').addClass('closed_bar');
   } 
 
   var enableBet = function() {
@@ -648,8 +672,9 @@ var wknd = function() {
   var partyTime = function() {
     rollCount = rollCount + 1;
     if (rollCount >= 2) {
-      // $('#open_bar').prop("disabled",false);
-      $('#open_bar').show();
+      $('#open_bar').prop("disabled",false);
+      $('#open_bar').removeClass('closed_bar');
+      // $('#open_bar').show();
     }
   }
 
@@ -657,10 +682,15 @@ var wknd = function() {
     rollCount = 0;
     $('#blotto_alley').show();
     $('#blotto_alley').addClass('animated slideInDown');
+    disableBet();
     setTimeout(function(){
       $('#blotto_alley').hide();
-      $('#open_bar').hide();
+      $('#open_bar').prop("disabled",true);
+      $('#open_bar').addClass('closed_bar');
       $.mobile.changePage("#page2", { transition: "flip"});
+      setTimeout(function(){
+        checkWallet();
+      }, 500);
     }, 2000);   
   }
 
@@ -808,16 +838,16 @@ var wknd = function() {
   
   //FRIDAY
   var checkFridayNight = function() {
-    if ((weekend.slice == 0) && weekend.beer == 0) {
+    if ((weekend.slice == 0) && (weekend.beer == 0) && (weekend.whiskey == 0)) {
       weekend.onesitting = 0;
       if (partyBro.dollar > 20) {
-        weekend.points = ((partyBro.dollar - 20) * 10) + 340; 
+        weekend.points = (partyBro.dollar - 20); 
         setTimeout(function(){
           partyBro.dollar = 20;
           showWallet();
         }, 1000);
       } else {
-        weekend.points = 340;
+        weekend.points = 0;
       }
       total.points = weekend.points;
       $.mobile.changePage("#page4", { transition: "flip"});
@@ -829,29 +859,65 @@ var wknd = function() {
   }
 
   var showFridayNight = function() {
+    $('#blotto-button-wknd').prop("disabled",true);
     var friday_stop_one = setTimeout(function(){
       $('#friday_goodnight').show();
-    }, 500);
+    }, 1000);
     var friday_stop_two = setTimeout(function(){
       $('#friday_goodnight').hide();
     }, 2500);
-    var friday_stop_three = setTimeout(function(){
-      $('#weekend_points').text("You've earned " + weekend.points + " weekend points!");
-      $('#weekend_points').show();
-    }, 3000);
-    var friday_stop_three = setTimeout(function(){
-      $('#weekend_points').hide();
-    }, 6000);
+    if (partyBro.dollar >= 25) {
+      var friday_stop_three = setTimeout(function(){
+        $('#friday_points').show();
+      }, 3000);
+      var friday_stop_four = setTimeout(function(){
+        $('#friday_points').hide();
+      }, 6000);
+      var friday_stop_five = setTimeout(function(){
+        $('#counter').show();
+        $('#mickey').show();
+      }, 7000);
+      var friday_stop_six = setTimeout(function(){
+        // counter("counter", 0, (Math.round(weekend.points / 10)), 1);
+        counter();
+      }, 8000);
+      var friday_stop_seven = setTimeout(function(){
+        $('#counter').hide();
+        $('#mickey').hide();
+      }, 12500);
+      var friday_stop_eight = setTimeout(function(){
+        $('#tomorrow_night').show();
+      }, 13500);
+      var friday_stop_nine = setTimeout(function(){
+        $('#tomorrow_night').hide();
+        $('#blotto-button-wknd').prop("disabled",false);
+        $('body').on('click', '#blotto-button-wknd', blottoWalkWknd);
+      }, 15500);
+    } else {
+      var friday_stop_ten = setTimeout(function(){
+        $('#tomorrow_night').show();
+      }, 3000);
+      var friday_stop_eleven = setTimeout(function(){
+        $('#tomorrow_night').hide();
+        $('#blotto-button-wknd').prop("disabled",false);
+        $('body').on('click', '#blotto-button-wknd', blottoWalkWknd);
+      }, 5500);
+    }
   }
 
   //SATURDAY
   var checkSaturdayNight = function() {
-    if ((weekend.slice == 0) && weekend.beer == 0) {
+    if ((weekend.slice == 0) && (weekend.beer == 0) && (weekend.whiskey == 0)) {
       weekend.onesitting = 0;
       $.mobile.changePage("#page4", { transition: "flip"});
       $('#saturday_goodnight').show();
       beerAndPizzaShow(); //work on saturday
       saturday = false;
+      $('#blotto-button-wknd').prop("disabled",true);
+      setTimeout(function(){
+        $('#blotto-button-wknd').prop("disabled",false);
+        $('body').on('click', '#blotto-button-wknd', blottoWalkWknd);
+      }, 7000);
     }
   }
 
@@ -861,8 +927,10 @@ var wknd = function() {
     }, 1500);
     weekend.slice = 8;
     weekend.beer = 6;
+    weekend.whiskey = 1;
   }
 
+  //Weekend Over
   weekendOver = function() {
     if (friday = true) {
       total.points = ((8 - weekend.slice) * 20) + ((6 - weekend.beer) * 30);
@@ -872,6 +940,8 @@ var wknd = function() {
   }
 
   weekendOverShow = function() {
+    $('#dice-button').hide();
+    $('#restart-weekend').show();
     var weekend_over_stop_one = setTimeout(function(){
       $('#weekend_over').show();
     }, 500);
@@ -902,7 +972,7 @@ var wknd = function() {
   var introduction = function() {
     var intro_stop_one = setTimeout(function(){
       $('#intro-1').show();
-    }, 500);
+    }, 1000);
     var intro_stop_two = setTimeout(function(){
       $('#intro-1').hide();
     }, 3500);
@@ -912,13 +982,34 @@ var wknd = function() {
     var intro_stop_four = setTimeout(function(){
       $('#intro-2').hide();
     }, 7000);
-    // var intro_stop_five = setTimeout(function(){
-    //   $('#intro-3').show();
-    // }, 7500);
     var intro_stop_six = setTimeout(function(){
       $('#intro-2').hide();
       $('#icon-restart').show();
     }, 10500);
+  }
+
+  var blottoWalk = function() {
+    $('#blotto-trans').addClass('animated bounceOutRight');
+    $('#blotto-button').prop("disabled",true);
+    setTimeout(function(){
+      $('#blotto-trans').removeClass('animated bounceOutRight');
+      $('#blotto-trans').addClass('animated bounceInLeft');
+    }, 1000);
+    setTimeout(function(){
+      $('#blotto-button').prop("disabled",false);
+    }, 2000);
+  }
+
+  var blottoWalkWknd = function() {
+    $('#blotto-trans-wknd').addClass('animated bounceOutRight');
+    $('#blotto-button-wknd').prop("disabled",true);
+    setTimeout(function(){
+      $('#blotto-trans-wknd').removeClass('animated bounceOutRight');
+      $('#blotto-trans-wknd').addClass('animated bounceInLeft');
+    }, 1000);
+    setTimeout(function(){
+      $('#blotto-button-wknd').prop("disabled",false);
+    }, 2000);
   }
 
   var toggleNavbar = function() {
@@ -944,21 +1035,87 @@ var wknd = function() {
 
   var resetWKNK = function() {
     rollCount = 0;
-    partyBro = {'name': '', 'dollar': 20, 'slice': 0, 'beer': 0, 'point': 0};
-    weekend = {'beer': 6, 'slice': 8, 'whiskey': 1, 'onesitting': 0, 'points': 0};
+    partyBro = {'name': '', 'dollar': 100, 'slice': 0, 'beer': 0, 'point': 0};
+    weekend = {'beer': 0, 'slice': 0, 'whiskey': 1, 'onesitting': 0, 'points': 0};
     total = {'points': 0};
     friday = true;
     intro();
     restartWKNDTimeout();
     restartTimeout = true;
+    $('#blotto-button').prop("disabled",true);
+    setTimeout(function(){
+      $('#blotto-button').prop("disabled",false);
+      $('body').on('click', '#blotto-button', blottoWalk);
+    }, 7000);
   }
+
+  // var counter = function() {
+  //   $('.counter').counterUp({
+  //     delay: 10,
+  //     time: 1000,
+  //     offset: 70,
+  //     beginAt: 100,
+  //     formatter: function (n) {
+  //       return n.replace(/,/g, '.');
+  //     });
+  // });
+  // }
+  
+  // function counter(id, start, end, duration) {
+  //   var range = end - start;
+  //   var current = start;
+  //   var increment = end > start? 1 : -1;
+  //   var stepTime = Math.abs(Math.floor(duration / range));
+  //   var obj = document.getElementById(id);
+  //   var timer = setInterval(function() {
+  //     current += increment;
+  //     obj.innerHTML = current;
+  //     if (current == end) {
+  //         clearInterval(timer);
+  //     }
+  //   }, stepTime);
+  // }
+
+  // var counter = function() {
+  //   $.fn.countTo = function(options) {
+  //     options = $.extend({}, $.fn.countTo.defaults, options || {});
+  //     var loops = Math.ceil(options.speed / options.refreshInterval),
+  //       increment = (options.to - options.from) / loops;
+  //     return $(this).each(function() {
+  //       var _this = this,
+  //         loopCount = 0,
+  //         value = options.from,
+  //         interval = setInterval(updateTimer, options.refreshInterval);
+  //       function updateTimer() {
+  //         value += increment;
+  //         loopCount++;
+  //         $(_this).html(value.toFixed(options.decimals));
+  //         if (typeof(options.onUpdate) == 'function') {
+  //             options.onUpdate.call(_this, value);
+  //         }
+  //         if (loopCount >= loops) {
+  //           clearInterval(interval);
+  //           value = options.to;
+  //           if (typeof(options.onComplete) == 'function') {
+  //             options.onComplete.call(_this, value);
+  //           }
+  //         }
+  //       }
+  //     });
+  //   };
+  //   $('.timer').countTo({
+  //     from: 0,
+  //     to: (Math.round(weekend.points / 10)),
+  //     speed: 500,
+  //     refreshInterval: 1,
+  //   });
+  // }
   
   this.startWKND = function() {
     resetWKNK();
     hidePlayerDice();
     hideComputerDice();
     showWallet();
-    beerAndPizzaShow();
     $('#img_hand').hide();
     $('#roll_dice').hide();
     $('#blotto_img_hand').hide();
@@ -970,7 +1127,7 @@ var wknd = function() {
     $('#all_in_bro').hide();
     $('#friday_goodnight').hide();
     $('#saturday_goodnight').hide();
-    $('#weekend_points').hide();
+    $('#friday_points').hide();
     $('#total_points').hide();
     $('#weekend_over').hide();
     $('#intro-1').hide();
@@ -979,10 +1136,18 @@ var wknd = function() {
     $('#bar_menu').hide();
     $('#menu-button').hide();
     $('#blotto_alley').hide();
-    $('#open_bar').hide();
-    // $('#open_bar').prop("disabled",true);
+    $('#mickey').hide();
+    $('#counter').hide();
+    $('#mickey').hide();
+    $('#tomorrow_night').hide();
+    // $('#navbar').hide();
+    $('#open_bar').prop("disabled",true);
+    $('#open_bar').addClass('closed_bar');
     setTimeout(function(){
       $('#place_bet').show();
+      beerAndPizzaShow();
+      $('#dice-button').show();
+      $('#restart-weekend').hide();
     }, 1000);
   }
 
@@ -996,6 +1161,7 @@ var wknd = function() {
     $('body').on('click', '#whiskey-button', payWhiskey);
     $('body').on('click', '#pizza-button', payPizza);
     $('body').on('click', '#icon-restart', restartWKNDCheck);
+    $('body').on('click', '#restart-weekend', restartWKNDCheck);
     $('body').on('click', '#icon-bars', toggleNavbar);
     $('body').on('click', '#menu-button-top', clickMenu);
     $('body').on('click', '#menu-button', hideMenu);
@@ -1011,6 +1177,5 @@ $(function(){
   myWKND._bindEvents();
   myWKND.startWKND();
 });
-
 
 

@@ -44,10 +44,8 @@
         <div data-role="header">
             <h1 class="header-padding">Blotto's Weekend</h1>
         </div>
+        <div id="dice-page-button" class="ui-block-c show_banner"><a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">DICE</a></div>
 
-        
-
-        <div id="dice-page-button" class="ui-block-c show_banner"><a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">DICE</a></li></div>
         <div class="contain-bubble">
             <div id="intro-1" class="bubble-blotto-ally-wide" style="border-color: pink; background: pink;">
                Hey buddy I got the dice, if you got the cash...
@@ -56,13 +54,12 @@
             <div id="intro-2" class="bubble-blotto-ally-wide" style="border-color: pink; background: pink;">
                Let's play some cee-lo!
             </div>
-            
-            <!-- <div id="intro-3" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
-               Now lets play some Cee-lo!
-            </div> -->
 
             <div>
-                <img id="blotto-trans" src="img/blotto-trans.png" />
+                <button id="blotto-button"></button>
+                <div>
+                    <img id="blotto-trans" src="img/blotto-trans.png" />
+                </div>
             </div>
         </div>
 
@@ -169,21 +166,22 @@
         </div>
  <!-- --------------------------- Page 3 ------------------------------ -->
         <div data-role="page" class="ui-page" id="page3" data-theme="d" style="background-image:url(img/road.jpg)">
-            <div data-role="header">
+            <div data-role="header" id="header_page3">
                
                <a href="#" class="ui-btn ui-icon-refresh ui-btn-icon-right top-icons header-padding" id="icon-restart"></a>
+               <!-- <a href="#" class="ui-btn ui-icon-refresh ui-btn-icon-right top-icons header-padding" id="icon-bars"></a> -->
 
                <h1 class="header-padding">Blotto's Weekend</h1>
                 
                <a href="#" class="ui-btn ui-btn-inline ui-btn-persist header-padding" id="open_bar">OPEN</a>
                
-               <!--  <div data-role="navbar" id="navbar">
+                <div data-role="navbar" id="navbar">
                     <ul>
                         <li><a href="#page4" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Blotto</a></li>
                         <li><a href="#page2" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Party</a></li>
                         <li><a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Dice</a></li>
                     </ul>
-                </div> -->
+                </div>
 
             </div>
             <!-- --------hidden Header Above------------- -->
@@ -300,7 +298,18 @@
             <h1 class="header-padding">Blotto's Weekend</h1>
         </div>
 
-        <div id="dice-page-button" class="ui-block-c show_banner"><a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">DICE</a></li></div>
+        <div id="dice-page-button" class="ui-block-c show_banner">
+            <a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist" data-transition="flip" id="dice-button">DICE</a>
+            <a href="#" class="ui-btn ui-btn-inline ui-btn-persist" id="restart-weekend">WKND</a>
+        </div>
+
+        <div id="mickeycounter">
+            <!-- <span class="timer" id="counter"></span> -->
+            <span class="counter" data-counterup-time="1500" data-counterup-delay="30" data-counterup-beginat="100">1,234,567.00</span>
+            <div id="mickey">
+                <img src="img/mickey.png" />
+            </div>
+        </div>
 
         <div class="contain-bubble">
         
@@ -317,7 +326,12 @@
                Great Friday Night Buddy!
             </div>
 
-            <div id="weekend_points" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
+            <div id="friday_points" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
+                You're cash rich, let me sell you some more booze!
+            </div>
+
+            <div id="tomorrow_night" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
+                See you tomorrow night!
             </div>
 
             <!-- SATURDAY NIGHT -->
@@ -326,7 +340,10 @@
             </div>
 
             <div>
-                <img id="blotto-trans" src="img/blotto-trans.png" />
+                <button id="blotto-button-wknd"></button>
+                <div>
+                    <img id="blotto-trans-wknd" src="img/blotto-trans.png" />
+                </div>
             </div>
         </div>
     
