@@ -1048,21 +1048,21 @@ body { text-align: center }
 }
 
 #blotto_fist {
-	width: 100%;
-	height: auto;
+	/*width: 100%;*/
+	/*height: auto;*/
   position: absolute;
-  bottom: 120px;
+  top: 220px;
   /*margin-left: 20%;*/
   right: -95px;
 }
 
 #blotto_hand {
-	width: 100%;
-	height: auto;
+	/*width: 100%;
+	height: auto;*/
   /*position: fixed;*/
   position: absolute;
-  bottom: 120px;
-  right: 0px;
+  top: 190px;
+  right: -95px;
 }
 
 #fist {
@@ -1454,6 +1454,12 @@ Whiskey
 	top: 150px;
 }
 
+#bar_menu_bm {
+	position: absolute;
+	z-index: 6;
+	top: 150px;
+}
+
 #menu-button-top {
 	float:left;
 	position: absolute;
@@ -1504,6 +1510,18 @@ Whiskey
 	z-index: 1;
 	top: 175px;
 	margin-left: 235px;
+}
+
+#bloodymary img {
+	width: 145px;
+	height:auto;
+}
+
+#bloodymary {
+	position: absolute;
+	z-index: 1;
+	top: 150px;
+	margin-left: 215px;
 }
 
 /*///////////////////////////
@@ -1678,7 +1696,7 @@ Pizza
 }
 
 #icon-restart {
-	background-color: #00E8CE;
+	background-color: transparent;
 	width: 0px;
 	height: 20px;
 	border:none;
@@ -1718,20 +1736,91 @@ Page Four
   position: relative;
   border-radius: 5px;
   margin-left: 25px;
-  width: 150px;
+  width: 125px;
   z-index: 1;
 }
 
 #counter {
-	  margin: 5px;
-    padding: 5px;
-    position: relative;
-    border-radius: 5px;
-    margin-left: 25px;
-    color: gold;
-    font-weight: bold;
-    font-size: 35px;
-    top: 125px;
-    z-index: 10;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  margin: 5px;
+  padding: 5px;
+  position: relative;
+  border-radius: 5px;
+  margin-left: 25px;
+  color: gold;
+  font-weight: bold;
+  font-size: 35px;
+  top: 125px;
+  z-index: 10;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
+
+* {
+  -webkit-user-select: none !important;
+}
+
+  
+#ShowScore {
+  margin-top: 150px;
+  height: 90px;
+  color: rgba(26,232,109,1);
+  width: 50%;
+  float: left;
+  font-size: 40px;
+  line-height: 40px;
+  letter-spacing: 5px;
+  text-shadow: -2px 0 0 #fdff2a,
+    -4px 0 0 #df4a42,
+    2px 0 0 #91fcfe,
+    4px 0 0 #4405fc;
+}
+
+#ShowTag {
+  margin-top: 150px;
+  height: 90px;
+  color: rgba(26,232,109,1);
+  width: 50%;
+  float: left;
+  font-size: 40px;
+  line-height: 40px;
+  letter-spacing: 5px;
+  text-shadow: -2px 0 0 #fdff2a,
+    -4px 0 0 #df4a42,
+    2px 0 0 #91fcfe,
+    4px 0 0 #4405fc;
+}
+
+#TagName {
+  border-radius: 0px 0px 0px 0px;
+  border-width: 0px;
+  background: rgba(26,232,109,0.7);
+  margin-top: 10px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: normal;
+  padding: 10px;
+  width: 50%;
+  float: left;
+  margin: 0px 0px 0px 0px;
+}
+
+.arcade-input .ui-corner-all {
+  box-shadow: none;
+  border-radius: 0px 0px 0px 0px !important;
+  border-width: 0px;
+  width: 50%;
+  float: left;
+  min-height: 2.85em;
+  margin: 0px 0px 0px 0px;
+}
+
+.arcade-input .ui-corner-all input {
+  font-size: 20px;
+}
+
+#the-arcade {
+	background: rgba(0,0,0,0.5);
+  min-height: 100vh;
+}
+
+
+

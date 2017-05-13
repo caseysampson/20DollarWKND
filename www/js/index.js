@@ -67,6 +67,7 @@ var wknd = function() {
   var intro_stop_six = '';
   var intro_stop_seven = '';
   var restartTimeout = '';
+  var clearTimeoutRestart = '';
 
 /////////////////////////
 // Cee lo
@@ -292,7 +293,9 @@ var wknd = function() {
     winnerShowBannerColor();
     // setTimeout(function(){
     hideCompDiceTimeout();
+    // restartTimeout = false;
     // }, 1000);
+    
   }
 
   var handleCompFourFiveSix = function() {
@@ -302,6 +305,7 @@ var wknd = function() {
     loserShowBannerColor();
     // setTimeout(function(){
     hideCompDiceTimeout();
+    // restartTimeout = false;
     // }, 1000);
   }
 
@@ -361,6 +365,7 @@ var wknd = function() {
 
   var handleTriplesAndEquals = function() {
     $('#roll_dice').hide();
+    // restartTimeout = true;
     if (partyBro.dollar >= currentBet) {
       doublePot();
       $('#double_pot_bro').show();
@@ -451,7 +456,7 @@ var wknd = function() {
   // Timeout
   /////////////////////////
   var hideDiceTimeoutRoll = function() {
-    setTimeout(function(){
+    var clearTimeoutRestart = setTimeout(function(){
       $('#double_pot').hide();
       $('#all_in').hide();
       $('#double_pot_bro').hide();
@@ -483,6 +488,7 @@ var wknd = function() {
       hideComputerDice(); 
       enableBet();
       checkWallet();
+      // restartTimeout = false;
     }, 3000);
   }
 
@@ -514,7 +520,7 @@ var wknd = function() {
       $('#blotto_img_hand').hide();
       $('#blotto_roll_dice').show();
       $('#blotto_roll_dice').addClass('animated slideInRight');
-    setTimeout(function(){
+    var clearTimeoutRestart = setTimeout(function(){
       showCompDiceRoll();
       blottoHideFist();
     }, 500);
@@ -524,7 +530,7 @@ var wknd = function() {
   }
 
   var blottoHideFist = function(){
-    setTimeout(function(){
+    var clearTimeoutRestart = setTimeout(function(){
       $('#blotto_roll_dice').hide();
       $('#blotto_img_hand').show();
       $('#blotto_img_hand').addClass('animated slideOutRight');
@@ -612,7 +618,7 @@ var wknd = function() {
     $('#ten_dollar').attr("disabled", true);
     $('#twenty_dollar').attr("disabled", true);
     $('#place_bet').hide();
-    $('#open_bar').prop("disabled",true);
+    $('#open_bar').prop("disabled", true);
     $('#open_bar').addClass('closed_bar');
   } 
 
@@ -706,30 +712,54 @@ var wknd = function() {
     $('#slice8').show();
     $('#beer1').show();
     $('#beer2').show();
-    $('#beer3').show();
     $('#beer4').show();
     $('#beer5').show();
-    $('#beer6').show();
-    $('#whiskeycup').show();
     $('#pizza-button').show();
     $('#whiskey-button').show();
     $('#beer-button').show();
+    if ((sunday == true) || (saturday == true)) {
+      $('#beer3').show();
+      $('#beer6').show();
+    } else {
+      $('#beer3').hide();
+      $('#beer6').hide();
+    }
+    if (sunday == true) {
+      $('#bloodymary').show();
+      $('#whiskeycup').hide();
+    } else {
+      $('#whiskeycup').show();
+      $('#bloodymary').hide();
+    }
   }
 
   var drinkBeer = function() {
-    if (weekend.beer == 6) {
-      $('#beer6').hide();
-    } else if (weekend.beer == 5) {
-      $('#beer3').hide();
-    } else if (weekend.beer == 4) {
-      $('#beer5').hide();
-    } else if (weekend.beer == 3) {
-      $('#beer2').hide();
-    } else if (weekend.beer == 2) {
-      $('#beer4').hide();
-    } else if (weekend.beer == 1) {
-      $('#beer1').hide();
-      $('#beer-button').show();
+    if (friday == true) {
+      if (weekend.beer == 4) {
+        $('#beer5').hide();
+      } else if (weekend.beer == 3) {
+        $('#beer2').hide();
+      } else if (weekend.beer == 2) {
+        $('#beer4').hide();
+      } else if (weekend.beer == 1) {
+        $('#beer1').hide();
+        $('#beer-button').show();
+      }
+    } else {
+      if (weekend.beer == 6) {
+        $('#beer6').hide();
+      } else if (weekend.beer == 5) {
+        $('#beer3').hide();
+      } else if (weekend.beer == 4) {
+        $('#beer5').hide();
+      } else if (weekend.beer == 3) {
+        $('#beer2').hide();
+      } else if (weekend.beer == 2) {
+        $('#beer4').hide();
+      } else if (weekend.beer == 1) {
+        $('#beer1').hide();
+        $('#beer-button').show();
+      }
     }
     if (weekend.beer > 0) {
       weekend.beer = weekend.beer - 1;
@@ -750,7 +780,11 @@ var wknd = function() {
 
   var drinkWhiskey = function() {
     if (weekend.whiskey == 1) {
-      $('#whiskeycup').hide();
+      if (sunday == true) {
+        $('#bloodymary').hide();
+      } else {
+        $('#whiskeycup').hide();
+      }
       $('#whiskey-button').hide();
     }
     if (weekend.whiskey > 0 ) {
@@ -760,8 +794,13 @@ var wknd = function() {
 
   var payWhiskey = function() {
     if ((weekend.whiskey >= 0) && (partyBro.dollar >= 5)) {
-      partyBro.dollar = partyBro.dollar - 5;
-      weekend.onesitting = weekend.onesitting + 5;
+      if (sunday == true) {
+        partyBro.dollar = partyBro.dollar - 8;
+        weekend.onesitting = weekend.onesitting + 8;
+      } else {
+        partyBro.dollar = partyBro.dollar - 5;
+        weekend.onesitting = weekend.onesitting + 5;
+      }
       drinkWhiskey();
       showWallet();
       checkWallet();
@@ -807,9 +846,11 @@ var wknd = function() {
   }
 
   var checkOneSitting = function() {
-    if (weekend.onesitting >= 8) {
+    if ((weekend.onesitting >= 8) && (partyBro.dollar > 0)) {
       $.mobile.changePage("#page3", { transition: "flip"});
       weekend.onesitting = 0;
+    } else if (partyBro.dollar <= 0) {
+      weekendOver();
     }
   }
 
@@ -818,28 +859,40 @@ var wknd = function() {
       checkFridayNight();
     } else if (saturday == true) {
       checkSaturdayNight();
+    } else if (sunday == true) {
+      checkSundayNight();
     }
   }
 
   var clickMenu = function() {
     $('#bar_menu_top').hide();
     $('#menu-button_top').hide();
-    $('#bar_menu').show();
     $('#menu-button').show();
-    $('#bar_menu').addClass('animated slideInUp');
+    if (sunday == true) {
+      $('#bar_menu_bm').show();
+      $('#bar_menu_bm').addClass('animated slideInUp');
+    } else {
+      $('#bar_menu').show();
+      $('#bar_menu').addClass('animated slideInUp');
+    }
   }
 
   var hideMenu = function() {
     $('#bar_menu_top').show();
     $('#menu-button_top').show();
-    $('#bar_menu').hide();
     $('#menu-button').hide();
+    if (sunday == true) {
+      $('#bar_menu_bm').hide();
+    } else {
+      $('#bar_menu').hide();
+    }
   }
   
   //FRIDAY
   var checkFridayNight = function() {
     if ((weekend.slice == 0) && (weekend.beer == 0) && (weekend.whiskey == 0)) {
       weekend.onesitting = 0;
+      total.points = partyBro.dollar;
       if (partyBro.dollar > 20) {
         weekend.points = (partyBro.dollar - 20); 
         setTimeout(function(){
@@ -849,7 +902,6 @@ var wknd = function() {
       } else {
         weekend.points = 0;
       }
-      total.points = weekend.points;
       $.mobile.changePage("#page4", { transition: "flip"});
       showFridayNight();
       startSaturday();
@@ -859,6 +911,7 @@ var wknd = function() {
   }
 
   var showFridayNight = function() {
+    $('#blotto-trans-wknd').addClass('animated bounceInLeft');
     $('#blotto-button-wknd').prop("disabled",true);
     var friday_stop_one = setTimeout(function(){
       $('#friday_goodnight').show();
@@ -866,7 +919,7 @@ var wknd = function() {
     var friday_stop_two = setTimeout(function(){
       $('#friday_goodnight').hide();
     }, 2500);
-    if (partyBro.dollar >= 25) {
+    if (partyBro.dollar >= 22.5) {
       var friday_stop_three = setTimeout(function(){
         $('#friday_points').show();
       }, 3000);
@@ -876,28 +929,25 @@ var wknd = function() {
       var friday_stop_five = setTimeout(function(){
         $('#counter').show();
         $('#mickey').show();
+        counter();
       }, 7000);
       var friday_stop_six = setTimeout(function(){
-        // counter("counter", 0, (Math.round(weekend.points / 10)), 1);
-        counter();
-      }, 8000);
-      var friday_stop_seven = setTimeout(function(){
         $('#counter').hide();
         $('#mickey').hide();
-      }, 12500);
-      var friday_stop_eight = setTimeout(function(){
+      }, 10000);
+      var friday_stop_seven = setTimeout(function(){
         $('#tomorrow_night').show();
-      }, 13500);
-      var friday_stop_nine = setTimeout(function(){
+      }, 10500);
+      var friday_stop_eight = setTimeout(function(){
         $('#tomorrow_night').hide();
         $('#blotto-button-wknd').prop("disabled",false);
         $('body').on('click', '#blotto-button-wknd', blottoWalkWknd);
-      }, 15500);
+      }, 12500);
     } else {
-      var friday_stop_ten = setTimeout(function(){
+      var friday_stop_nine = setTimeout(function(){
         $('#tomorrow_night').show();
       }, 3000);
-      var friday_stop_eleven = setTimeout(function(){
+      var friday_stop_ten = setTimeout(function(){
         $('#tomorrow_night').hide();
         $('#blotto-button-wknd').prop("disabled",false);
         $('body').on('click', '#blotto-button-wknd', blottoWalkWknd);
@@ -906,21 +956,6 @@ var wknd = function() {
   }
 
   //SATURDAY
-  var checkSaturdayNight = function() {
-    if ((weekend.slice == 0) && (weekend.beer == 0) && (weekend.whiskey == 0)) {
-      weekend.onesitting = 0;
-      $.mobile.changePage("#page4", { transition: "flip"});
-      $('#saturday_goodnight').show();
-      beerAndPizzaShow(); //work on saturday
-      saturday = false;
-      $('#blotto-button-wknd').prop("disabled",true);
-      setTimeout(function(){
-        $('#blotto-button-wknd').prop("disabled",false);
-        $('body').on('click', '#blotto-button-wknd', blottoWalkWknd);
-      }, 7000);
-    }
-  }
-
   var startSaturday = function() {
     setTimeout(function(){
       beerAndPizzaShow();
@@ -930,31 +965,175 @@ var wknd = function() {
     weekend.whiskey = 1;
   }
 
+  var checkSaturdayNight = function() {
+    if ((weekend.slice == 0) && (weekend.beer == 0) && (weekend.whiskey == 0)) {
+      weekend.onesitting = 0;
+      total.points = total.points + partyBro.dollar;
+      if (partyBro.dollar > 20) {
+        weekend.points = (partyBro.dollar - 20); 
+        setTimeout(function(){
+          partyBro.dollar = 20;
+          showWallet();
+        }, 1000);
+      } else {
+        weekend.points = 0;
+      }
+      $.mobile.changePage("#page4", { transition: "flip"});
+      showSaturdayNight();
+      startSunday();
+      saturday = false;
+      sunday = true;
+    }
+  }
+
+  var showSaturdayNight = function() {
+    $('#dice-button').text("SUNDAY");
+    $('#blotto-trans-wknd').addClass('animated bounceInLeft');
+    $('#blotto-button-wknd').prop("disabled",true);
+    var saturday_stop_one = setTimeout(function(){
+      $('#saturday_goodnight').show();
+    }, 1000);
+    var saturday_stop_two = setTimeout(function(){
+      $('#saturday_goodnight').hide();
+    }, 2500);
+    if (partyBro.dollar >= 22.5) {
+      var saturday_stop_three = setTimeout(function(){
+        $('#saturday_points').show();
+      }, 3000);
+      var saturday_stop_four = setTimeout(function(){
+        $('#saturday_points').hide();
+      }, 6000);
+      var saturday_stop_five = setTimeout(function(){
+        $('#counter').show();
+        $('#mickey').show();
+        counter();
+      }, 7000);
+      var saturday_stop_six = setTimeout(function(){
+        $('#counter').hide();
+        $('#mickey').hide();
+      }, 10000);
+      var saturday_stop_seven = setTimeout(function(){
+        $('#tomorrow_night').show();
+      }, 10500);
+      var saturday_stop_eight = setTimeout(function(){
+        $('#tomorrow_night').hide();
+        $('#blotto-button-wknd').prop("disabled",false);
+        $('body').on('click', '#blotto-button-wknd', blottoWalkWknd);
+      }, 12500);
+    } else {
+      var saturday_stop_nine = setTimeout(function(){
+        $('#tomorrow_night').show();
+      }, 3000);
+      var saturday_stop_ten = setTimeout(function(){
+        $('#tomorrow_night').hide();
+        $('#blotto-button-wknd').prop("disabled",false);
+        $('body').on('click', '#blotto-button-wknd', blottoWalkWknd);
+      }, 5500);
+    }
+  }
+
+  //Sunday
+  var startSunday = function() {
+    setTimeout(function(){
+      beerAndPizzaShow();
+    }, 1500);
+    weekend.slice = 8;
+    weekend.beer = 6;
+    weekend.whiskey = 1;
+  }
+
+  var checkSundayNight = function() {
+    if ((weekend.slice == 0) && (weekend.beer == 0) && (weekend.whiskey == 0)) {
+      weekend.onesitting = 0;
+      total.points = total.points + partyBro.dollar;
+      if (partyBro.dollar > 20) {
+        weekend.points = (partyBro.dollar - 20); 
+        setTimeout(function(){
+          partyBro.dollar = 20;
+          showWallet();
+        }, 1000);
+      } else {
+        weekend.points = 0;
+      }
+      $('#dice-button').hide();
+      $('#restart-weekend').show();
+      $.mobile.changePage("#page4", { transition: "flip"});
+      showSundayNight();
+      sunday = false;
+      friday = true;
+    }
+  }
+
+  var showSundayNight = function() {
+    $('#blotto-trans-wknd').addClass('animated bounceInLeft');
+    $('#blotto-button-wknd').prop("disabled",true);
+    var sunday_stop_one = setTimeout(function(){
+      $('#sunday_goodnight').show();
+    }, 1000);
+    var sunday_stop_two = setTimeout(function(){
+      $('#sunday_goodnight').hide();
+    }, 2500);
+    if (partyBro.dollar >= 22.5) {
+      var sunday_stop_three = setTimeout(function(){
+        $('#sunday_points').show();
+      }, 3000);
+      var sunday_stop_four = setTimeout(function(){
+        $('#sunday_points').hide();
+      }, 6000);
+      var sunday_stop_five = setTimeout(function(){
+        $('#counter').show();
+        $('#mickey').show();
+        counter();
+      }, 7000);
+      var sunday_stop_six = setTimeout(function(){
+        $('#counter').hide();
+        $('#mickey').hide();
+      }, 10000);
+      var sunday_stop_seven = setTimeout(function(){
+        $('#next_weekend').show();
+      }, 10500);
+      var sunday_stop_eight = setTimeout(function(){
+        $('#next_weekend').hide();
+        $('#blotto-button-wknd').prop("disabled",false);
+        $('body').on('click', '#blotto-button-wknd', blottoWalkWknd);
+      }, 12500);
+    } else {
+      var sunday_stop_nine = setTimeout(function(){
+        $('#next_weekend').show();
+      }, 3000);
+      var sunday_stop_ten = setTimeout(function(){
+        $('#next_weekend').hide();
+        $('#blotto-button-wknd').prop("disabled",false);
+        $('body').on('click', '#blotto-button-wknd', blottoWalkWknd);
+      }, 5500);
+    }
+    // $.mobile.changePage("#page5", { transition: "flip"});
+  }
+
   //Weekend Over
   weekendOver = function() {
-    if (friday = true) {
-      total.points = ((8 - weekend.slice) * 20) + ((6 - weekend.beer) * 30);
-    }
     $.mobile.changePage("#page4", { transition: "flip"});
     weekendOverShow();
   }
 
   weekendOverShow = function() {
+    $('#blotto-trans-wknd').addClass('animated bounceInLeft');
     $('#dice-button').hide();
     $('#restart-weekend').show();
+    $('#blotto-button-wknd').prop("disabled",true);
     var weekend_over_stop_one = setTimeout(function(){
       $('#weekend_over').show();
-    }, 500);
+    }, 1000);
     var weekend_over_stop_two = setTimeout(function(){
       $('#weekend_over').hide();
-    }, 2500);
+    }, 3500);
     var weekend_over_stop_three = setTimeout(function(){
-      $('#total_points').text("You earned " + total.points + " weekend points!");
-      $('#total_points').show();
-    }, 3000);
+      $('#next_weekend').show();
+    }, 4000);
     var weekend_over_stop_three = setTimeout(function(){
-      $('#total_points').hide();
-    }, 6000);
+      $('#next_weekend').hide();
+      $('#blotto-button-wknd').prop("disabled",false);
+    }, 7000);
   }
 
   //START
@@ -970,6 +1149,7 @@ var wknd = function() {
   }
 
   var introduction = function() {
+    $('#blotto-trans').addClass('animated bounceInLeft');
     var intro_stop_one = setTimeout(function(){
       $('#intro-1').show();
     }, 1000);
@@ -982,10 +1162,6 @@ var wknd = function() {
     var intro_stop_four = setTimeout(function(){
       $('#intro-2').hide();
     }, 7000);
-    var intro_stop_six = setTimeout(function(){
-      $('#intro-2').hide();
-      $('#icon-restart').show();
-    }, 10500);
   }
 
   var blottoWalk = function() {
@@ -1012,12 +1188,61 @@ var wknd = function() {
     }, 2000);
   }
 
+  var counter = function() {
+    $('#counter').each(function() {
+      var $this = $(this),
+        countTo = (Math.round(weekend.points/5) + 1);
+      // $({ countNum: $this.text()}).animate({
+      $({ countNum: 0}).animate({
+        countNum: countTo
+      },
+
+      {
+        duration: 1500,
+        easing:'linear',
+        step: function() {
+          $this.text(Math.floor(this.countNum));
+        },
+      });  
+    });
+  }
+
   var toggleNavbar = function() {
       $('#navbar').toggle("slide");
   }
 
+  var diceButton = function() {
+    $.mobile.changePage("#page3", { transition: "flip"});
+    changeNightHeading();
+  }
+
+  var changeNightHeading = function() {
+    if (friday == true) {
+      $('.night').text("Friday");
+    } else if (saturday == true) {
+      $('.night').text("Saturday");
+    } else if (sunday == true) {
+      $('.night').text("Sunday");
+    }
+  }
+
+  ///NAME
+  // var getTag = function() {
+  //   partyBro.name = $('#partyBroName').val().toUpperCase();
+  //   $('#ShowTag').text(partyBro.name);
+  //   $('#ShowScore').text(total.points);
+  // }
+  //END NAME
+
   var restartWKNDCheck = function() {
     if (restartTimeout == false) {
+      $('#double_pot').hide();
+      $('#all_in').hide();
+      $('#double_pot_bro').hide();
+      $('#all_in_bro').hide();
+      $('#roll_dice').hide();
+      hidePlayerDice();
+      hideComputerDice();  
       restartWKND();
     }
   }
@@ -1025,7 +1250,7 @@ var wknd = function() {
   var restartWKNDTimeout = function() {
     var intro_stop_seven = setTimeout(function(){
       restartTimeout = false;
-    }, 10500);
+    }, 8000);
   }
 
   var restartWKND = function() {
@@ -1035,81 +1260,23 @@ var wknd = function() {
 
   var resetWKNK = function() {
     rollCount = 0;
-    partyBro = {'name': '', 'dollar': 100, 'slice': 0, 'beer': 0, 'point': 0};
-    weekend = {'beer': 0, 'slice': 0, 'whiskey': 1, 'onesitting': 0, 'points': 0};
+    partyBro = {'name': '', 'dollar': 20, 'slice': 0, 'beer': 0, 'point': 0};
+    weekend = {'beer': 4, 'slice': 8, 'whiskey': 1, 'onesitting': 0, 'points': 0};
     total = {'points': 0};
     friday = true;
+    saturday = false;
+    sunday = false;
     intro();
     restartWKNDTimeout();
     restartTimeout = true;
+    $('.night').text("Friday");
+    $('#dice-button').text("SATURDAY");
     $('#blotto-button').prop("disabled",true);
     setTimeout(function(){
       $('#blotto-button').prop("disabled",false);
       $('body').on('click', '#blotto-button', blottoWalk);
     }, 7000);
   }
-
-  // var counter = function() {
-  //   $('.counter').counterUp({
-  //     delay: 10,
-  //     time: 1000,
-  //     offset: 70,
-  //     beginAt: 100,
-  //     formatter: function (n) {
-  //       return n.replace(/,/g, '.');
-  //     });
-  // });
-  // }
-  
-  // function counter(id, start, end, duration) {
-  //   var range = end - start;
-  //   var current = start;
-  //   var increment = end > start? 1 : -1;
-  //   var stepTime = Math.abs(Math.floor(duration / range));
-  //   var obj = document.getElementById(id);
-  //   var timer = setInterval(function() {
-  //     current += increment;
-  //     obj.innerHTML = current;
-  //     if (current == end) {
-  //         clearInterval(timer);
-  //     }
-  //   }, stepTime);
-  // }
-
-  // var counter = function() {
-  //   $.fn.countTo = function(options) {
-  //     options = $.extend({}, $.fn.countTo.defaults, options || {});
-  //     var loops = Math.ceil(options.speed / options.refreshInterval),
-  //       increment = (options.to - options.from) / loops;
-  //     return $(this).each(function() {
-  //       var _this = this,
-  //         loopCount = 0,
-  //         value = options.from,
-  //         interval = setInterval(updateTimer, options.refreshInterval);
-  //       function updateTimer() {
-  //         value += increment;
-  //         loopCount++;
-  //         $(_this).html(value.toFixed(options.decimals));
-  //         if (typeof(options.onUpdate) == 'function') {
-  //             options.onUpdate.call(_this, value);
-  //         }
-  //         if (loopCount >= loops) {
-  //           clearInterval(interval);
-  //           value = options.to;
-  //           if (typeof(options.onComplete) == 'function') {
-  //             options.onComplete.call(_this, value);
-  //           }
-  //         }
-  //       }
-  //     });
-  //   };
-  //   $('.timer').countTo({
-  //     from: 0,
-  //     to: (Math.round(weekend.points / 10)),
-  //     speed: 500,
-  //     refreshInterval: 1,
-  //   });
-  // }
   
   this.startWKND = function() {
     resetWKNK();
@@ -1127,19 +1294,26 @@ var wknd = function() {
     $('#all_in_bro').hide();
     $('#friday_goodnight').hide();
     $('#saturday_goodnight').hide();
+    $('#sunday_goodnight').hide();
     $('#friday_points').hide();
+    $('#saturday_points').hide();
+    $('#sunday_points').hide();
+    $('#tomorrow_night').hide();
+    $('#next_weekend').hide();
     $('#total_points').hide();
     $('#weekend_over').hide();
     $('#intro-1').hide();
     $('#intro-2').hide();
     $('#intro-3').hide();
     $('#bar_menu').hide();
+    $('#bar_menu_bm').hide();
     $('#menu-button').hide();
+    $('#bar_menu_top').show();
+    $('#menu-button_top').show();
     $('#blotto_alley').hide();
     $('#mickey').hide();
     $('#counter').hide();
     $('#mickey').hide();
-    $('#tomorrow_night').hide();
     // $('#navbar').hide();
     $('#open_bar').prop("disabled",true);
     $('#open_bar').addClass('closed_bar');
@@ -1166,6 +1340,10 @@ var wknd = function() {
     $('body').on('click', '#menu-button-top', clickMenu);
     $('body').on('click', '#menu-button', hideMenu);
     $('body').on('click', '#open_bar', openBar);
+    $('body').on('click', '#dice-button', diceButton);
+    //NAME
+    // $('body').on('click', '#TagName', getTag);
+    //END NAME
   }
 
 }

@@ -34,6 +34,7 @@
         <!-- <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
         <script src="js/index.js"></script>
 
+
     </head>
     <body class="container">
       
@@ -44,7 +45,7 @@
         <div data-role="header">
             <h1 class="header-padding">Blotto's Weekend</h1>
         </div>
-        <div id="dice-page-button" class="ui-block-c show_banner"><a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">DICE</a></div>
+        <div id="dice-page-button" class="ui-block-c show_banner"><a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip" onclick="clearTimeout(clearTimeoutRestart)">FRIDAY</a></div>
 
         <div class="contain-bubble">
             <div id="intro-1" class="bubble-blotto-ally-wide" style="border-color: pink; background: pink;">
@@ -68,10 +69,9 @@
 <!-- --------------------------- Page 2 ------------------------------ -->
         <div data-role="page" class="ui-page" id="page2" data-theme="d" style="background-image:url(img/wood-table-top.jpg)">
             <div data-role="header">
-
-                
+     
                 <a href="#" class="ui-btn ui-icon-refresh ui-btn-icon-right top-icons header-padding" id="icon-restart"></a>
-                <h1 class="header-padding">Blotto's Weekend</h1>
+                <h1 class="header-padding night" id="night"></h1>
                 <a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist header-padding"  data-transition="flip" id="exit">EXIT</a>
 
             </div>
@@ -111,6 +111,9 @@
                 <button type="submit" id="whiskey-button" data-corners="false"></button>
                 <div id="whiskeycup">
                     <img src="img/whiskey.png" />
+                </div>
+                <div id="bloodymary">
+                    <img src="img/bloodymary.png" />
                 </div>
             </div>
 
@@ -155,6 +158,9 @@
                 <div id="bar_menu">
                     <img src="img/trans_menu.png" />
                 </div>
+                <div id="bar_menu_bm">
+                    <img src="img/trans_menu_bm.png" />
+                </div>
             </div>
             <div id="menu_top" class="menu_top">
                 <button type="submit" id="menu-button-top" data-corners="false"></button>
@@ -168,20 +174,20 @@
         <div data-role="page" class="ui-page" id="page3" data-theme="d" style="background-image:url(img/road.jpg)">
             <div data-role="header" id="header_page3">
                
-               <a href="#" class="ui-btn ui-icon-refresh ui-btn-icon-right top-icons header-padding" id="icon-restart"></a>
+               <a href="#" class="ui-btn ui-icon-refresh ui-btn-icon-right top-icons header-padding" id="icon-restart" onclick="clearTimeout(clearTimeoutRestart)"></a>
                <!-- <a href="#" class="ui-btn ui-icon-refresh ui-btn-icon-right top-icons header-padding" id="icon-bars"></a> -->
 
-               <h1 class="header-padding">Blotto's Weekend</h1>
+               <h1 class="header-padding night" id="night"></h1>
                 
                <a href="#" class="ui-btn ui-btn-inline ui-btn-persist header-padding" id="open_bar">OPEN</a>
                
-                <div data-role="navbar" id="navbar">
+                <!-- <div data-role="navbar" id="navbar">
                     <ul>
                         <li><a href="#page4" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Blotto</a></li>
                         <li><a href="#page2" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Party</a></li>
-                        <li><a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Dice</a></li>
+                        <li><a href="#page5" class="ui-btn ui-btn-inline ui-btn-persist"  data-transition="flip">Score</a></li>
                     </ul>
-                </div>
+                </div> -->
 
             </div>
             <!-- --------hidden Header Above------------- -->
@@ -295,17 +301,16 @@
     <div data-role="page" class="ui-page" id="page4" data-theme="d" style="background-image:url(img/brick_background.jpg)">
         <div data-role="header">
             <a href="#" class="ui-btn ui-icon-refresh ui-btn-icon-right top-icons header-padding" id="icon-restart"></a>
-            <h1 class="header-padding">Blotto's Weekend</h1>
+            <h1 class="header-padding night" id="night"></h1>
         </div>
 
         <div id="dice-page-button" class="ui-block-c show_banner">
-            <a href="#page3" class="ui-btn ui-btn-inline ui-btn-persist" data-transition="flip" id="dice-button">DICE</a>
+            <a href="#" class="ui-btn ui-btn-inline ui-btn-persist" data-transition="flip" id="dice-button"></a>
             <a href="#" class="ui-btn ui-btn-inline ui-btn-persist" id="restart-weekend">WKND</a>
         </div>
 
         <div id="mickeycounter">
-            <!-- <span class="timer" id="counter"></span> -->
-            <span class="counter" data-counterup-time="1500" data-counterup-delay="30" data-counterup-beginat="100">1,234,567.00</span>
+            <div id="counter"></div>
             <div id="mickey">
                 <img src="img/mickey.png" />
             </div>
@@ -315,7 +320,7 @@
         
             <!-- WEEKEND OVER -->
             <div id="weekend_over" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
-               Great Weekend Buddy!
+               Great night buddy, shame to see it cut short...
             </div>
 
             <div id="total_points" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
@@ -323,11 +328,11 @@
 
            <!--  FRIDAY NIGHT -->
             <div id="friday_goodnight" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
-               Great Friday Night Buddy!
+               Great Friday night buddy!
             </div>
 
             <div id="friday_points" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
-                You're cash rich, let me sell you some more booze!
+                You're cash rich, I'll grab you some over stock...
             </div>
 
             <div id="tomorrow_night" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
@@ -335,8 +340,27 @@
             </div>
 
             <!-- SATURDAY NIGHT -->
+
             <div id="saturday_goodnight" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
-               Great Saturday Night Buddy!
+               Great Saturday night buddy!
+            </div>
+
+            <div id="saturday_points" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
+                You're cash rich, I'll grab you some over stock...
+            </div>
+
+            <!-- SUNDAY NIGHT -->
+
+            <div id="sunday_goodnight" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
+               Great Sunday night buddy!
+            </div>
+
+            <div id="sunday_points" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
+                You're cash rich, I'll grab you some over stock...
+            </div>
+
+            <div id="next_weekend" class="bubble-blotto-ally" style="border-color: pink; background: pink;">
+                See you next weekend!
             </div>
 
             <div>
@@ -350,7 +374,28 @@
     </div>
 
 <!-- ----------------------------page 5--------------------------------------- -->
+    <!-- <div data-role="page" class="ui-page" id="page5" data-theme="d" style="background-image:url(img/brick_background.jpg)">
+        <div data-role="header">
+            <a href="#" class="ui-btn ui-icon-refresh ui-btn-icon-right top-icons header-padding" id="icon-restart"></a>
+            <h1 class="header-padding">Blotto's Weekend</h1>
+        </div>
+
+        <form>
+            <div class="arcade-input">
+                <input type="text" name="partyBroName" id="partyBroName" value="" placeholder="BUDDY"/>
+            </div>    
+        </form>
+        <div> 
+            <button type="submit" class="ui-btn ui-btn-inline ui-btn-persist" id="TagName">
+            ENTER NAME
+            </button>
+        </div>
+        <div id="the-arcade">
+            <div class="arcade-text" id="ShowTag"></div> 
+            <div class="arcade-text" id="ShowScore"></div> 
+        </div>
     
+    </div> -->
 
 <!-- ----------------------------page 6--------------------------------------- -->
 
