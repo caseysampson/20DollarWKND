@@ -1166,7 +1166,8 @@ body { text-align: center }
 #dice-page-button {
 	float: right;
 	margin-right: 30px;
-	padding: 20px;
+	/*padding: 20px;*/
+	margin-top: 15px;
 }
 
 #dice-page-button a {
@@ -1396,6 +1397,7 @@ Die
   text-shadow: none;
   padding: 2px;
   font-size: 20px;
+  margin-top: 15px !important;
 }
 
 .closed_bar {
@@ -1417,6 +1419,7 @@ Die
   text-shadow: none;
   padding: 2px;
   font-size: 20px;
+  margin-top: 15px !important;
 }
 
 /*///////////////////////////
@@ -1701,6 +1704,12 @@ Pizza
 	height: 20px;
 	border:none;
 	box-shadow: none;
+	margin-top: 15px !important;
+}
+
+.night-header {
+	text-shadow: none;
+	font-size: 1.2em !important;
 }
 
 /*///////////////////////////

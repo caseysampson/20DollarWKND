@@ -1269,9 +1269,9 @@ var wknd = function() {
     intro();
     restartWKNDTimeout();
     restartTimeout = true;
-    $('.night').text("Friday");
     $('#dice-button').text("SATURDAY");
     $('#blotto-button').prop("disabled",true);
+    $('.night').text("Friday");
     setTimeout(function(){
       $('#blotto-button').prop("disabled",false);
       $('body').on('click', '#blotto-button', blottoWalk);
